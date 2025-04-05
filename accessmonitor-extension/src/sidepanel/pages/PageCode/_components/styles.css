@@ -1,0 +1,69 @@
+.group_mobile {
+  display: none;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .deskGroupMobile {
+    display: none !important;
+  }
+
+  .group_mobile {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.firstGroupContainer {
+  width: 48% !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.firstGroupContainer button {
+  width: 100%;
+  font-size: 13.5px;
+}
+
+.firstGroupContainer button:first-child {
+  margin-bottom: 10px;
+}
+
+/* Dark Mode */
+.dark_mode-code button {
+  background-color: var(--ama-color-text-blue) !important;
+  color: var(--ama-color-background-dark-lighter);
+}
+
+.dark_mode-code button:not(:focus) {
+  border-color: var(--ama-color-text-blue);
+}
+
+.dark_mode-code button:active {
+  background-color: var(--ama-color-text-blue) !important;
+  color: var(--ama-color-background-dark-lighter) !important;
+}
+
+.dark_mode-code button:hover {
+  background-color: transparent !important;
+  border-color: var(--ama-color-text-blue);
+  color: var(--ama-color-text-blue);
+}
+
+.dark_mode-code button:focus {
+  color: var(--ama-color-text-grey) !important;
+}
+
+.dark_mode-code .other button:focus {
+  color: var(--ama-color-text-blue) !important;
+}
+
+.dark_mode-code .other button {
+  background-color: var(--ama-color-background-dark-lighter) !important;
+
+  color: var(--ama-color-text-blue);
+}
+
+.dark_mode-code .other button:not(:focus) {
+  border-color: var(--ama-color-background-dark-lighter);
+}

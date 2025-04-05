@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "AccessMonitor Extension",
+    "description": "Accessibility Evaluation using AccessMonitor",
+    "version": "1.0",
+    "background": {
+        "service_worker": "dist/background.js"
+    },
+    "action": {
+        "default_title": "Click to open panel"
+    },
+    "permissions": [
+        "storage",
+        "sidePanel",
+        "activeTab",
+        "tabs",
+        "scripting",
+        "debugger"
+    ],
+    "content_security_policy": {
+      "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": [
+                "dist/qwPage.js",
+                "dist/util.js",
+                "dist/locales/en.js",
+                "dist/act.js",
+                "dist/content.js",
+                "dist/wcag.js",
+                "dist/bp.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
