@@ -14,7 +14,7 @@ import { pathURL } from "../../App";
 import { downloadCSV } from "../../../utils/utils";
 import { ThemeContext } from "../../../context/ThemeContext";
 
-export default function Resume() {
+export default function PageCode({ setAllData, setEle }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

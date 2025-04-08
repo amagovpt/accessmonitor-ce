@@ -2,12 +2,14 @@
 // import "./styles.css";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Button, Icon } from 'ama-design-system'
+import { Button, Icon } from 'ama-design-system';
 
 import { pathURL } from "../../../App";
+import { reset } from "../../../store/slice/evaluationSlice";
 
 export function ButtonsActions({
   reRequest,
@@ -17,8 +19,15 @@ export function ButtonsActions({
   themeClass,
 }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [seePage, setSeePage] = useState(false);
+
+  const newPage = () => {
+    dispatch(reset());
+    navigate(`${pathURL}`);
+  };
 
   const openPageLinks = () => {
     setSeePage(!seePage);
@@ -33,7 +42,7 @@ export function ButtonsActions({
           size="md"
           text={t("HEADER.evaluate_new_page")}
           iconRight={<Icon name="AMA-Setalongaoficial-Line" />}
-          onClick={() => navigate(`${pathURL}`)}
+          onClick={newPage}
         />
 
         <div className="d-flex flex-row gap-3 other">

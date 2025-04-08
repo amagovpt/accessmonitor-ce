@@ -1,16 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import "./styles.css";
 
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Button, Icon } from 'ama-design-system'
 
 import { pathURL } from "../../../App";
+import { reset } from "../../../store/slice/evaluationSlice";
 
 export function ButtonsActions({ downloadCSV, handleGoBack, themeClass }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const newPage = () => {
+    dispatch(reset());
+    navigate(`${pathURL}`);
+  };
 
   return (
     <>
@@ -19,7 +27,7 @@ export function ButtonsActions({ downloadCSV, handleGoBack, themeClass }) {
           size="md"
           text={t("HEADER.evaluate_new_page")}
           iconRight={<Icon name="AMA-Setalongaoficial-Line" />}
-          onClick={() => navigate(`${pathURL}`)}
+          onClick={newPage}
         />
 
         <div className="d-flex flex-row gap-3 other">

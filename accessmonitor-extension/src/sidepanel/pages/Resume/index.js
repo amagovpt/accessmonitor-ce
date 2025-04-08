@@ -11,7 +11,7 @@ import { ButtonsActions } from "./_components/buttons-revalidation";
 import { optionForAccordion, callbackImgT } from "./utils";
 
 import { pathURL } from "../../App";
-import { reset, setPageCode, setData, setProcessedData } from "../../store/slice/evaluationSlice";
+import { reset, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData } from "../../store/slice/evaluationSlice";
 
 import { downloadCSV } from  "../../../utils/utils";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -29,6 +29,8 @@ export default function Resume({ setAllData, setEle }) {
 
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [error, setError] = useState(false);
+
+  const [reEvltd, setReEvltd] = useState(false);
 
   const { theme } = useContext(ThemeContext);
   const themeClass = theme === "light" ? "" : "dark_mode-resume";
@@ -60,18 +62,23 @@ export default function Resume({ setAllData, setEle }) {
     report.modules["wcag-techniques"] = evaluation.wcag;
     report.modules["best-practices"] = evaluation.bp;
 
+    console.log('Built Report');
     setReport(report);
   };
 
   useEffect(() => {
-    if (prevOriginalData.data && prevDataProcess.metadata && (code.length != 0)) {
+    if (!reEvltd && prevOriginalData.data && prevDataProcess.metadata && (code.length != 0)) {
       setOriginalData(prevOriginalData);
       setDataProcess(prevDataProcess);
       return;
     }
 
+    if (reEvltd) {
+      setReEvltd(false);
+    }
+
     buildReport();
-  }, []);
+  }, [reEvltd]);
 
   useEffect(() => {
     const parseResults = async () => {
@@ -101,12 +108,56 @@ export default function Resume({ setAllData, setEle }) {
   useEffect(() => {
     if (dataProcess) {
       setLoadingProgress(false);
+      console.log('Set Loading State Off');
     }
   }, [dataProcess]);
 
-  const evaluateDifferentPage = () => {
+  const reRequest = async () => {
+    // DELETE STORED VALUES
     dispatch(reset());
-    navigate(`${pathURL}`);
+
+    // EVALUATE PAGE
+    let act, bp, html, summary, url, wcag;
+
+    // get page's url
+    url = await getUrl();
+    dispatch(setURL(url));
+    
+    // start evaluation
+    await startEvaluation();
+
+    // get html
+    html = await getHTML();
+    dispatch(setDom({ html: html }));
+
+    // evaluate act
+    act = await evaluateACT();
+    dispatch(setACT(act));
+
+    // evaluate wcag
+    wcag = await evaluateWCAG();
+    dispatch(setWCAG(wcag));
+
+    // evaluate bp
+    bp = await evaluateBP();
+    dispatch(setBP(bp));
+
+    // finish evaluation
+    summary = await endingEvaluation();
+    dispatch(setSummary(summary));
+
+    if (act && wcag && bp) {
+      dispatch(setEvaluated());
+    }
+
+    // RELOAD ALL VARIABLES
+    setLoadingProgress(true);
+    setReport();
+    setOriginalData();
+    setDataProcess();
+    setReEvltd(true);
+    
+    return true;
   };
 
   const seeCode = () => {
@@ -163,7 +214,7 @@ export default function Resume({ setAllData, setEle }) {
           </section>
         ) : (
           !error ? <ButtonsActions
-            reRequest={evaluateDifferentPage}
+            reRequest={reRequest}
             seeCode={seeCode}
             downloadCSV={() => downloadCSV(dataProcess, originalData.data, t)}
             href={dataProcess?.metadata?.url}

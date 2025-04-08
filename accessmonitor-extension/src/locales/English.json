@@ -806,8 +806,8 @@
         "p": "I noticed that <mark>all</mark> <code>&lt;button&gt;</code> elements have accessible name."
       },
       "button_02": {
-        "s": "I found <mark>{{value}}</mark> <code>&lt;button&t;</code> element without accessible name.",
-        "p": "I found <mark>{{value}}</mark> <code>&lt;button&t;</code> elements without accessible name."
+        "s": "I found <mark>{{value}}</mark> <code>&lt;button&gt;</code> element without accessible name.",
+        "p": "I found <mark>{{value}}</mark> <code>&lt;button&gt;</code> elements without accessible name."
       },
       "element_01": {
         "s": "I found <mark>{{value}}</mark> element in the sequential focus order.",
@@ -906,8 +906,8 @@
         "p": "I found <mark>{{value}}</mark> groups of links with the same accessible name and context but different targets."
       },
       "menuItem_01": {
-        "s": "I noticed that <mark>all</mark> elements with the <code>menuitem>/code> role have an accessible name",
-        "p": "I noticed that <mark>all</mark> elements with the <code>menuitem>/code> role have an accessible name"
+        "s": "I noticed that <mark>all</mark> elements with the <code>menuitem</code> role have an accessible name",
+        "p": "I noticed that <mark>all</mark> elements with the <code>menuitem</code> role have an accessible name"
       },
       "menuItem_02": {
         "s": "I found <mark>{{value}}</mark> element with the <code>menuitem</code> role without accessible name",
@@ -1255,7 +1255,7 @@
       "5f99a7": "<p>The ARIA specification defines the set of attributes that can be used. If you use attributes that are not defined by the specification, they will not work.</p>",
       "80f0bf": "<p><code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements that play automatically can prevent screen reader users from listening the screen reader output clearly. Consequently, these elements should not play automatically, or, in case they do, the audio should last less than 3 seconds or they should make available a mechanism to stop or mute the audio.</p>",
       "73f2c2": "<p>The rules for autocomplete attributes are defined in the HTML specification. Make sure you follow the specification, otherwise the elements will not be automatically filled.</p>",
-      "97a4e1": "<p><code>&lt;button&t;</code> elements are elements that the user can interact with. Consequently, they must have an accessible name that allows users of Assistive Technology to understand their purpose.</p>",
+      "97a4e1": "<p><code>&lt;button&gt;</code> elements are elements that the user can interact with. Consequently, they must have an accessible name that allows users of Assistive Technology to understand their purpose.</p>",
       "oj04fd": "<p>A visible focus allows distinguishing when elements in the sequential focus order receive focus. Check that all elements in the sequential focus order have a visible focus indicator when they receive focus.</p>",
       "6cfa84": "<p>Elements with the aria-hidden attribute are hidden from Assistive Technologies. If they are keyboard focusable, users of Assistive Technologies will receive no feedback when those elements are focused.</p>",
       "46ca7f": "<p>Decorative elements have no informational content to be presented to users. Therefore, these elements should not be exposed to Assistive Technologies, preventing them from being presented to users of Assistive Technologies.</p>",
