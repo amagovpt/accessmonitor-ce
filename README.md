@@ -9,11 +9,11 @@ A presente extensão está em vias de ser publicada na _Chrome Web Store da Goog
 
 ![pressione code > descarregar zip](https://github.com/user-attachments/assets/273e1457-6353-4acb-a08c-322288ff37aa)
 
-No repositório Git pressione no botão "Code" e depois usa a subopção "Descarregar ZIP".
+No repositório Git pressione no botão "Code" e depois use a subopção "Descarregar ZIP".
 
-No seu computador descompacte o ficheiro accessmonitor-ce-main.zip que acabou de descarregar e obterá a diretoria e o conteúdo seguinte: 
+No seu computador descompacte o ficheiro `accessmonitor-ce-main.zip` que acabou de descarregar e obterá a diretoria e o conteúdo seguinte: 
 
-- /accessmonitor-ce-main
+- /accessmonitor-ce-main/
   - /accessmonitor-extension/
   - /accessmonitor-images/
   - LICENSE
@@ -29,7 +29,7 @@ A ativação desta opção fará surgir no canto superior esquerdo o botão "Car
 
 ![botão carregar expandida](https://github.com/user-attachments/assets/bd68cc92-1069-49e3-b18e-dd93daf0094f)
 
-Pressione nesse botão e selecione a pasta /accessmonitor-extension/ que está dentro da pasta que descompactou no passo anterior.
+Pressione no botão "carregar expandida" e selecione a pasta `/accessmonitor-extension/` que está dentro da pasta que descompactou no passo anterior. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
 
 ![seleciona a pasta accessmonitor-extension e pressiona o botão selecionarimagem](https://github.com/user-attachments/assets/8c542232-a3dd-423d-b15b-e1cbe03c4d64)
 
