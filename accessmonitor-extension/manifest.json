@@ -7,7 +7,7 @@
         "service_worker": "dist/background.js"
     },
     "action": {
-        "default_title": "Click to open panel"
+        "default_title": "AccessMonitor Extension"
     },
     "permissions": [
         "storage",

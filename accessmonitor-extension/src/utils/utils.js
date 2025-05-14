@@ -42,7 +42,7 @@ export function convertBytes(length) {
   }
 }
 
-export function downloadCSV(dataProcess, originalData, t) {
+export function downloadCSV(nEvals, dataProcess, originalData, t) {
   const data = [];
 
   let error, level, sc, desc, num;
@@ -116,11 +116,20 @@ export function downloadCSV(dataProcess, originalData, t) {
   labels.push(t("CSV.count"));
   labels.push(t("CSV.value"));
   labels.push(t("RESULTS.summary.score"));
-
+  
   let csvContent = labels.join(";") + "\r\n";
   for (const row of data || []) {
     csvContent += row.join(";") + "\r\n";
   }
+  csvContent += "\r\n\r\n";
+
+  const evals = [];
+  evals.push("Total page evaluations");
+  const n_evals = [];
+  n_evals.push(nEvals);
+  
+  csvContent += evals.join(";") + "\r\n";
+  csvContent += n_evals.join(";") + "\r\n";
 
   const blob = new Blob([csvContent], { type: "text/csv" });
   saveAs(blob, "eval.csv");

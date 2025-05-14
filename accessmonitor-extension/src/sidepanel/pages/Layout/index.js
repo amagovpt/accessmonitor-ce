@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Footer, Header } from 'ama-design-system';
+import { Header } from './_components/Header';
 
 import { accessMonitorURL, pathURL } from '../../App';
 
@@ -32,12 +32,10 @@ export default function Layout({ children }) {
       <Header
         darkTheme={theme}
         logo={theme === "light" ? `${accessMonitorURL}img/logo.svg` : `${accessMonitorURL}img/logo-dark.svg`}
-        description={t("HEADER.line_text")}
         homePage={location.pathname === `${pathURL}` ? true : false}
         language={language}
         changeLanguage={toggleLanguage}
         changeTheme={toggleTheme}
-        linkTo={`${pathURL}`}
         ariaLabel={t("HEADER.header_arial_label")}
       />
       <main
@@ -47,8 +45,6 @@ export default function Layout({ children }) {
       >
         {children}
       </main>
-
-      <Footer darkTheme={theme} />
     </>
   );
 }

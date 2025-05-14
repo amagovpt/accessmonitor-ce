@@ -11,7 +11,6 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Detail from './pages/Details';
-import PageCode from './pages/PageCode';
 
 import { ThemeProvider } from '../context/ThemeContext';
 
@@ -40,11 +39,6 @@ export default function App() {
             <Route
               path={`${pathURL}results/:details`}
               element={<Detail setAllData={setAllData} allData={allData} />}
-            />
-
-            <Route
-              path={`${pathURL}results/code`}
-              element={<PageCode setAllData={setAllData} setEle={setEle} />}
             />
           </Routes>
         </Layout>

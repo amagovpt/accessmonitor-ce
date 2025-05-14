@@ -2,14 +2,10 @@
 // import "./styles.css";
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Button, Icon } from 'ama-design-system';
-
-import { pathURL } from "../../../App";
-import { reset } from "../../../store/slice/evaluationSlice";
 
 export function ButtonsActions({
   reRequest,
@@ -19,15 +15,9 @@ export function ButtonsActions({
   themeClass,
 }) {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [seePage, setSeePage] = useState(false);
-
-  const newPage = () => {
-    dispatch(reset());
-    navigate(`${pathURL}`);
-  };
 
   const openPageLinks = () => {
     setSeePage(!seePage);
@@ -38,13 +28,6 @@ export function ButtonsActions({
       <div
         className={`d-flex flex-row justify-content-between deskGroupMobile ${themeClass}`}
       >
-        <Button
-          size="md"
-          text={t("HEADER.evaluate_new_page")}
-          iconRight={<Icon name="AMA-Setalongaoficial-Line" />}
-          onClick={newPage}
-        />
-
         <div className="d-flex flex-row gap-3 other">
           <Button
             size="md"
@@ -54,7 +37,7 @@ export function ButtonsActions({
             onClick={() => reRequest()}
           />
 
-          <div>
+          {/* <div>
             <Button
               id="dropdownMenuButton"
               size="md"
@@ -79,15 +62,9 @@ export function ButtonsActions({
                     <Icon name="AMA-Code-Line" />
                   </button>
                 </li>
-                <li>
-                  <a href={href} rel="noreferrer">
-                    <span>{t("RESULTS.actions.open_webpage")}</span>
-                    <Icon name="AMA-Externo-Line" />
-                  </a>
-                </li>
               </u>
             )}
-          </div>
+          </div> */}
 
           <div>
             <Button
@@ -104,14 +81,7 @@ export function ButtonsActions({
 
       <div className={`group_mobile ${themeClass}`}>
         <div className="firstGroupContainer">
-          <Button
-            size="md"
-            text={t("HEADER.")}
-            iconRight={<Icon name="AMA-Setalongaoficial-Line" />}
-            onClick={() => navigate(`${pathURL}`)}
-          />
-
-          <div>
+          {/* <div>
             <Button
               id="dropdownMenuButton"
               size="md"
@@ -136,15 +106,9 @@ export function ButtonsActions({
                     <Icon name="AMA-Code-Line" />
                   </button>
                 </li>
-                <li>
-                  <a href={href} rel="noreferrer">
-                    <span>{t("RESULTS.actions.open_webpage")}</span>
-                    <Icon name="AMA-Externo-Line" />
-                  </a>
-                </li>
               </u>
             )}
-          </div>
+          </div> */}
         </div>
 
         <div className="secondGroupContainer">

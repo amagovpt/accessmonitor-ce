@@ -80,7 +80,7 @@
       "file_title": "Select an HTML file",
       "file_name_label": "File name",
       "file_type_error": "Invalid file type",
-      "submit": "Evaluate",
+      "submit": "Evaluate page",
       "messages": {
         "invalid_url": "The given url is invalid or does not exist"
       },
@@ -177,6 +177,11 @@
       "embedded_css_tab": "Embedded CSS",
       "caption": "Result {{ value }} of the practice",
       "result": {
+        "actions": {
+          "highlight": "Highlight",
+          "hide": "Hide"
+        },
+        "highlight_element": "Highlight element:",
         "element": "Element:",
         "attributes": "Attributes:",
         "content": "Content/text:",

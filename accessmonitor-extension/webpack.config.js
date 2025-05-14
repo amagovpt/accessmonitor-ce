@@ -60,6 +60,7 @@ const config = {
                 { from: 'src/locales/en.js', to: 'locales/en.js' },
                 { from: 'src/sidepanel/evaluate.js', to: 'sidepanel/evaluate.js' },
                 { from: 'src/sidepanel/middleware.js', to: 'sidepanel/middleware.js' },
+                { from: 'src/sidepanel/highlight.js', to: 'sidepanel/highlight.js' },
                 { from: 'src/sidepanel/sidepanel.html', to: 'sidepanel/sidepanel.html', transform: { transformer: transformHtml, cache: true } },
                 { from: 'manifest.json', to: 'manifest.json' },
             ],
