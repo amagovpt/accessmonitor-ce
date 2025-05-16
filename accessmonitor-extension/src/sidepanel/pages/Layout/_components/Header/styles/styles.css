@@ -1,0 +1,111 @@
+header.ama .skip-to-content {
+  background: var(--ama-color-background-white);
+}
+
+header.ama .logo .title_h1 {
+  color: var(--ama-color-brand-primary);
+  font-size: 26px;
+}
+
+header.ama p.logo  {
+  margin-bottom: 0px;
+}
+
+header.ama .skip-to-content-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden !important;
+  white-space: nowrap;
+  border: 0;
+  color: var(--ama-color-brand-primary) !important;
+  opacity: 0;
+}
+
+header.ama .skip-to-content-link:focus {
+  position: static;
+  overflow: visible !important;
+  white-space: normal;
+  outline: 1px solid var(--ama-color-blue-600);
+  color: var(--ama-color-brand-primary) !important;
+  outline-color: var(--ama-color-blue-600);
+  border-radius: 4px;
+  width: max-content;
+  height: fit-content;
+  opacity: 100;
+}
+
+header.ama .text-primary {
+  color: var(--ama-color-brand-primary) !important;
+}
+
+header.ama .widgets-bar {
+  background-color: var(--ama-color-background-light-lighter);
+}
+
+header.ama .widgets-bar a {
+  text-decoration: none;
+}
+
+header.ama .site-description p {
+  text-align: right;
+}
+
+header.ama .button-mobile {
+  display: none !important;
+}
+@media only screen and (max-width: 991px) {
+  header.ama .logo img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  header.ama .button-mobile {
+    display: flex !important;
+    margin: 0.5rem 0;
+    justify-content: center;
+  }
+
+  header.ama.dark .button-mobile button,
+  header.ama.dark .button-mobile button i {
+    color: var(--ama-color-text-blue) !important;
+  }
+
+  header.ama.dark .button-mobile button:focus {
+    border-color: var(--ama-color-text-blue) !important;
+  }
+
+  header.ama .site-description p {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  header.ama .logo img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+header.ama .menu-hamburger {
+  border: 0;
+  width: 45px;
+  height: 45px;
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-brand-primary);
+}
+
+header.ama .menu-hamburger span {
+  font-size: 20px;
+}
+
+/* Dark Theme */
+header.ama.dark .widgets-bar {
+  background-color: var(--ama-color-brand-primary);
+  color: var(--ama-color-background-white) !important;
+}
+
+header.ama.dark .logo .title_h1 {
+  color: var(--ama-color-text-blue);
+}

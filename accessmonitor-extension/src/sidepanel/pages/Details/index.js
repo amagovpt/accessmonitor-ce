@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { Breadcrumb, Icon, LoadingComponent } from "ama-design-system";
 
 import { TableDetails } from "./_components/TableDetails";
+import { ButtonsActions } from "./_components/buttons-revalidation";
 
 import { pathURL } from "../../App";
 
@@ -27,24 +28,12 @@ export default function Details({ allData, setAllData }) {
 
   const themeClass = theme === "light" ? "" : "dark_mode-details";
 
-  const url = allData?.data?.rawUrl;
-
   const handleGoBack = () => {
     navigate(`${pathURL}results`);
   };
 
   const textHeading = t(`ELEMS.${details}`);
   const [dataTable, setDataTable] = useState([]);
-
-  const dataBreadCrumb = [
-    {
-      title: "Acessibilidade.gov.pt",
-      href: "https://www.acessibilidade.gov.pt/",
-    },
-    { title: "Access Monitor" },
-    { title: url },
-    { title: textHeading }
-  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,7 +70,7 @@ export default function Details({ allData, setAllData }) {
     <>
       <div className={`container ${themeClass}`}>
         <div className="link_breadcrumb_container">
-          <Breadcrumb data={dataBreadCrumb} onClick={handleGoBack} darkTheme={theme} tagHere={t("HEADER.DROPDOWN.youarehere")} />
+          {/* <Breadcrumb data={dataBreadCrumb} onClick={handleGoBack} darkTheme={theme} tagHere={t("HEADER.DROPDOWN.youarehere")} /> */}
         </div>
 
         <div className="report_container">
@@ -96,8 +85,17 @@ export default function Details({ allData, setAllData }) {
           </section>
         ) : 
         !error ? <>
+            <div className="go-back">
+              <ButtonsActions
+                handleGoBack={() => handleGoBack()}
+                themeClass={themeClass}
+                theme={theme}
+              />
+            </div>
+
             <div className="bg-white show_details">
               <div className="d-flex flex-row justify-content-between align-items-center show_details-container">
+
                 <div className="d-flex flex-row align-items-center">
                   <div className={`d-flex align-items-center justify-content-center m-2 p-3 ${tdClassName}`}>
                     <Icon name={iconName} />
@@ -117,7 +115,7 @@ export default function Details({ allData, setAllData }) {
             </div>
 
             <div className="tabContent_container-details">
-              <TableDetails data={dataTable?.elements} />
+              <TableDetails themeClass={themeClass} theme={theme} data={dataTable?.elements} />
             </div>
           </> : <h3>{error}</h3>
         }

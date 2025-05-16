@@ -79,7 +79,7 @@
       "file_title": "Escolha um ficheiro HTML",
       "file_name_label": "Nome do ficheiro",
       "file_type_error": "Tipo de ficheiro inválido",
-      "submit": "Validar",
+      "submit": "Avaliar página",
       "messages": {
         "invalid_url": "O url inserido é inválido ou não existe"
       },
@@ -176,6 +176,11 @@
       "embedded_css_tab": "Estilos embutidos",
       "caption": "Resultado {{ value }} da prática",
       "result": {
+        "actions": {
+          "highlight": "Destacar",
+          "hide": "Esconder"
+        },
+        "highlight_element": "Destacar elemento:",
         "element": "Elemento:",
         "attributes": "Atributos:",
         "content": "Conteúdo/texto:",
@@ -1254,7 +1259,7 @@
       "5f99a7": "<p>A especificação ARIA define o conjunto de atributos que podem ser usados. Se usar atributos que não estão definidos na especificação, eles não irão funcionar.</p>",
       "80f0bf": "<p>Elementos <code>&lt;audio&gt;</code> e <code>&lt;video&gt;</code> que tocam automaticamente podem prejudicar utilizadores de leitor de ecrã ao sobreporem o som. Por isso, estes elementos não devem tocar automaticamente, ou, caso toquem, devem ter áudio inferior a 3 segundos, ou possuir um mecanismo que permita interromper ou silenciar o áudio.</p>",
       "73f2c2": "<p>As regras de preenchimento dos atributos autocomplete são definidas na especificação HTML. Garante que obedece as estas regras, caso contrário, os elementos não serão preenchidos automaticamente.</p>",
-      "97a4e1": "<p>Os elementos <code>&lt;button&t;</code> são elementos com os quais o utilizador pode interagir. Por isso, devem ter nome acessível de modo a que utilizadores de tecnologias de apoio saibam qual o seu propósito.</p>",
+      "97a4e1": "<p>Os elementos <code>&lt;button&gt;</code> são elementos com os quais o utilizador pode interagir. Por isso, devem ter nome acessível de modo a que utilizadores de tecnologias de apoio saibam qual o seu propósito.</p>",
       "oj04fd": "<p>O foco visível permite distinguir quando é os elementos na ordem de foco sequencial recebem o foco. Verifique que todos os elementos na ordem de foco sequencial têm um indicador de foco visível quando recebem o foco.</p>",
       "6cfa84": "<p>Os elementos com o atributo aria-hidden são escondidos das tecnologias de apoio. Se forem focáveis por teclado, quando forem focados os utilizadores de tecnologias de apoio não recebem informação sobre esses elementos.</p>",
       "46ca7f": "<p>Os elementos decorativos não têm conteúdo informativo que deve ser apresentado aos utilizadores. Assim, estes elementos não devem ser expostos às Tecnologias de Apoio, para que não sejam apresentados aos seus utilizadores.</p>",

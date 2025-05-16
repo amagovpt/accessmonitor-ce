@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Breadcrumb, Gauge, LoadingComponent, StatsTable, TableComponent } from "ama-design-system";
+import { Gauge, LoadingComponent, TableComponent } from "ama-design-system";
 
+import { StatsTable } from "./_components/StatsTable";
 import { ButtonsActions } from "./_components/buttons-revalidation";
 import { optionForAccordion, callbackImgT } from "./utils";
 
 import { pathURL } from "../../App";
-import { reset, setPageCode, setData, setProcessedData } from "../../store/slice/evaluationSlice";
+import { reset, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData, setNEvals, setCsvData, setCsvProcessedData } from "../../store/slice/evaluationSlice";
 
 import { downloadCSV } from  "../../../utils/utils";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -27,8 +28,15 @@ export default function Resume({ setAllData, setEle }) {
   const [originalData, setOriginalData] = useState();
   const [dataProcess, setDataProcess] = useState();
 
+  // CSV variables
+  const [totalEvals, setTotalEvals] = useState(1);
+  const [csvOriginalData, setCsvOriginalData] = useState();
+  const [csvDataProcess, setCsvDataProcess] = useState();
+
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [error, setError] = useState(false);
+
+  const [reEvltd, setReEvltd] = useState(false);
 
   const { theme } = useContext(ThemeContext);
   const themeClass = theme === "light" ? "" : "dark_mode-resume";
@@ -37,6 +45,9 @@ export default function Resume({ setAllData, setEle }) {
   const prevOriginalData = evaluation.data;
   const prevDataProcess = evaluation.processedData;
   const code = evaluation.pageCode;
+  const prevTotalEvals = evaluation.nEvals;
+  const prevCsvOriginalData = evaluation.csvData;
+  const prevCsvDataProcess = evaluation.csvProcessedData;
 
   const buildReport = () => {
     const report = {};
@@ -60,18 +71,34 @@ export default function Resume({ setAllData, setEle }) {
     report.modules["wcag-techniques"] = evaluation.wcag;
     report.modules["best-practices"] = evaluation.bp;
 
+    console.log('Built Report');
     setReport(report);
   };
 
   useEffect(() => {
-    if (prevOriginalData.data && prevDataProcess.metadata && (code.length != 0)) {
+    if (!reEvltd && prevOriginalData.data && prevDataProcess.metadata && (code.length != 0)) {
       setOriginalData(prevOriginalData);
       setDataProcess(prevDataProcess);
+      
+      // handle csv variables
+      if (prevCsvOriginalData && prevCsvDataProcess.metadata && prevTotalEvals) {
+        setCsvOriginalData(prevCsvOriginalData);
+        setCsvDataProcess(prevCsvDataProcess);
+        setTotalEvals(prevTotalEvals);
+      } else {
+        setCsvOriginalData(prevOriginalData.data);
+        setCsvDataProcess(prevDataProcess);
+      }
+      
       return;
     }
 
+    if (reEvltd) {
+      setReEvltd(false);
+    }
+
     buildReport();
-  }, []);
+  }, [reEvltd]);
 
   useEffect(() => {
     const parseResults = async () => {
@@ -79,6 +106,10 @@ export default function Resume({ setAllData, setEle }) {
       dispatch(setData(parsedResults));
       dispatch(setPageCode(parsedResults.pagecode || "html"));
       setOriginalData(parsedResults);
+
+      // handle csv data
+      dispatch(setCsvData(parsedResults.data));
+      setCsvOriginalData(parsedResults.data);
     }
 
     if (report && !originalData) {
@@ -87,10 +118,44 @@ export default function Resume({ setAllData, setEle }) {
   }, [report]);
 
   useEffect(() => {
+    const updateCSVProcessedData = (newData) => {
+      for (const row in csvDataProcess["results"]) {
+        if (csvDataProcess["results"][row]) {
+          let exists = false;
+          for (const r in newData["results"]) {
+            if (newData["results"][r]) {
+              if (newData["results"][r]["msg"] === csvDataProcess["results"][row]["msg"]) {
+                exists = true;
+                if (parseInt(newData["results"][r]["value"]) > parseInt(csvDataProcess["results"][row]["value"])) {
+                  newData["results"][r] = csvDataProcess["results"][row];
+                }
+                break;
+              }
+            }
+          }
+
+          if (!exists) {
+            newData["results"].push(csvDataProcess["results"][row]);
+          }
+        }
+      }
+
+      dispatch(setCsvProcessedData(newData));
+      setCsvDataProcess(newData);
+    }
+
     const processData = async () => {
       const processedData = await processReportData(originalData.data.tot, evaluation.url);
       dispatch(setProcessedData(processedData));
       setDataProcess(processedData);
+      
+      // handle csv data
+      if (csvDataProcess?.metadata && processedData) {
+        updateCSVProcessedData(processedData);
+      } else {
+        dispatch(setCsvProcessedData(processedData));
+        setCsvDataProcess(processedData);
+      }
     }
 
     if (originalData && !dataProcess) {
@@ -101,12 +166,58 @@ export default function Resume({ setAllData, setEle }) {
   useEffect(() => {
     if (dataProcess) {
       setLoadingProgress(false);
+      console.log('Set Loading State Off');
     }
   }, [dataProcess]);
 
-  const evaluateDifferentPage = () => {
+  const reRequest = async () => {
+    // DELETE STORED VALUES
     dispatch(reset());
-    navigate(`${pathURL}`);
+    dispatch(setNEvals());
+    setTotalEvals(totalEvals + 1);
+
+    // EVALUATE PAGE
+    let act, bp, html, summary, url, wcag;
+
+    // get page's url
+    url = await getUrl();
+    dispatch(setURL(url));
+    
+    // start evaluation
+    await startEvaluation();
+
+    // get html
+    html = await getHTML();
+    dispatch(setDom({ html: html }));
+
+    // evaluate act
+    act = await evaluateACT();
+    dispatch(setACT(act));
+
+    // evaluate wcag
+    wcag = await evaluateWCAG();
+    dispatch(setWCAG(wcag));
+
+    // evaluate bp
+    bp = await evaluateBP();
+    dispatch(setBP(bp));
+
+    // finish evaluation
+    summary = await endingEvaluation();
+    dispatch(setSummary(summary));
+
+    if (act && wcag && bp) {
+      dispatch(setEvaluated());
+    }
+
+    // RELOAD ALL VARIABLES
+    setLoadingProgress(true);
+    setReport();
+    setOriginalData();
+    setDataProcess();
+    setReEvltd(true);
+    
+    return true;
   };
 
   const seeCode = () => {
@@ -134,15 +245,6 @@ export default function Resume({ setAllData, setEle }) {
     // }
   }
 
-  const dataBreadCrumb = [
-    {
-      title: "Acessibilidade.gov.pt",
-      href: "https://www.acessibilidade.gov.pt/",
-    },
-    { title: "Access Monitor" },
-    { title: evaluation.url }
-  ];
-
   let scoreData = originalData?.data?.tot?.info?.score;
 
   if (scoreData === "10.0") {
@@ -151,9 +253,7 @@ export default function Resume({ setAllData, setEle }) {
 
   return (
     <div className={`container ${themeClass}`}>
-      <div className="link_breadcrumb_container">
-        <Breadcrumb data={dataBreadCrumb} darkTheme={theme} tagHere={t("HEADER.DROPDOWN.youarehere")} />
-      </div>
+      <div className="link_breadcrumb_container" />
 
       <div className="report_container">
         <h1 className="report_container_subtitle">{t("RESULTS.title")}</h1>
@@ -163,9 +263,9 @@ export default function Resume({ setAllData, setEle }) {
           </section>
         ) : (
           !error ? <ButtonsActions
-            reRequest={evaluateDifferentPage}
+            reRequest={reRequest}
             seeCode={seeCode}
-            downloadCSV={() => downloadCSV(dataProcess, originalData.data, t)}
+            downloadCSV={() => downloadCSV(totalEvals, csvDataProcess, csvOriginalData, t)}
             href={dataProcess?.metadata?.url}
             themeClass={themeClass}
           /> : <h3>{error}</h3>
@@ -181,28 +281,12 @@ export default function Resume({ setAllData, setEle }) {
               </div>
               <div className="resume_info_about_uri d-flex flex-column gap-4">
                 <div className="d-flex flex-column">
-                  <span>URL</span>
-                  <span className="break_url">{dataProcess?.metadata?.url}</span>
-                </div>
-
-                <div className="d-flex flex-column">
                   <span>{t("RESULTS.summary.metadata.title_label")}</span>
                   <span>{dataProcess?.metadata?.title}</span>
                 </div>
               </div>
             </div>
             <div className="d-flex flex-row justify-content-between size_and_table_container">
-              <div className="size_container d-flex flex-column gap-4">
-                <div className="d-flex flex-column">
-                  <span>{dataProcess?.metadata?.n_elements}</span>
-                  <span>{t("RESULTS.summary.metadata.n_elements_label")}</span>
-                </div>
-
-                <div className="d-flex flex-column">
-                  <span>{dataProcess?.metadata?.size}</span>
-                  <span>{t("RESULTS.summary.metadata.page_size_label")}</span>
-                </div>
-              </div>
               <div className="table_container_sumary">
                 <StatsTable
                   data={{data: dataProcess}}

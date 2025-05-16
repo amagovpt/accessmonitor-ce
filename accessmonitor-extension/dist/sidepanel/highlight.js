@@ -1,0 +1,1 @@
+async function highlightElement(e){return new Promise(((n,t)=>{chrome.tabs.query({active:!0,currentWindow:!0},(t=>{chrome.tabs.sendMessage(t[0].id,{action:"highlightElement",message:e},(e=>{n(e)}))}))}))}

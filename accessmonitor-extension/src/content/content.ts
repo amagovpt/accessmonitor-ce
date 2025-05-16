@@ -2,6 +2,7 @@ import { locale_en } from '../locales/en';
 import { addValuesToSummary } from '../utils/evaluationHelpers';
 import { Summary } from '../utils/types';
 import { getTestRslts, parseEvaluation, processData } from './evaluation/middleware';
+import { highlightElmnt } from './interact/highlight';
 
 let summary: Summary = { passed: 0, failed: 0, warning: 0, inapplicable: 0, title: document.title };
 
@@ -44,6 +45,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const { test, nodes, tt } = request.message;
       const testResults = getTestRslts(test, nodes, tt);
       sendResponse(testResults);
+      break;
+    case "highlightElement":
+      const state = highlightElmnt(request.message);
+      sendResponse(state);
       break;
     default:
       console.error("Unknown action:", request.action);
