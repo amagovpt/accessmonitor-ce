@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Breadcrumb, Icon, LoadingComponent } from "ama-design-system";
+import { Icon, LoadingComponent } from "ama-design-system";
 
 import { TableDetails } from "./_components/TableDetails";
-import { ButtonsActions } from "./_components/buttons-revalidation";
+import { ButtonsActions, ButtonsHighlight } from "./_components/buttons-revalidation";
 
 import { pathURL } from "../../App";
 
@@ -28,7 +28,84 @@ export default function Details({ allData, setAllData }) {
 
   const themeClass = theme === "light" ? "" : "dark_mode-details";
 
-  const handleGoBack = () => {
+  const getElementsLocations = () => {
+    let codes = [];
+    dataTable?.elements?.map((element) => codes.push(element?.pointer));
+    return codes;
+  }
+
+  const handleHighlightAllElements = async () => {
+    const highlighted = await highlightAllElements(getElementsLocations());
+
+    if (highlighted) {
+      let i = 1;
+      while (i <= dataTable?.elements?.length) {
+        // change button
+        const hideButton = document.getElementById(`hideElement_${i}`);
+        const showButton = document.getElementById(`showElement_${i}`);
+
+        if (hideButton) {
+          hideButton.style.display = "block";
+        }
+        if(showButton) {
+          showButton.style.display = "none";
+        }
+
+        i++;
+      }
+
+      // change general button
+      const hideButton = document.getElementById('hideAllElements');
+      const showButton = document.getElementById('showAllElements');
+
+      if (hideButton) {
+        hideButton.style.display = "block";
+      }
+      if(showButton) {
+        showButton.style.display = "none";
+      }
+    } else {
+      console.error("Failed to highlight elements");
+    }
+  }
+
+  const handleUnhighlightAllElements = async () => {
+    const unhighlighted = await unhighlightAllElements(getElementsLocations());
+
+    if (unhighlighted) {
+      let i = 1;
+      while (i <= dataTable?.elements?.length) {
+        // change button
+        const hideButton = document.getElementById(`hideElement_${i}`);
+        const showButton = document.getElementById(`showElement_${i}`);
+
+        if (hideButton) {
+          hideButton.style.display = "none";
+        }
+        if(showButton) {
+          showButton.style.display = "block";
+        }
+
+        i++;
+      }
+
+      // change general button
+      const hideButton = document.getElementById('hideAllElements');
+      const showButton = document.getElementById('showAllElements');
+
+      if (hideButton) {
+        hideButton.style.display = "none";
+      }
+      if(showButton) {
+        showButton.style.display = "block";
+      }
+    } else {
+      console.error("Failed to unhighlight elements: " + codes);
+    }
+  }
+
+  const handleGoBack = async () => {
+    await unhighlightAllElements(getElementsLocations());
     navigate(`${pathURL}results`);
   };
 
@@ -110,6 +187,28 @@ export default function Details({ allData, setAllData }) {
                 <div className="result_left_container">
                   <span className="ama-typography-display-6 bold p-2 ps-4">{dataTable?.size}</span>
                   <span className="ama-typography-body p-2">{t("ELEMENT_RESULTS.total_elements")}</span>
+                </div>
+
+                <div className="result_left_container">
+                  <span className="ama-typography-body bold p-3 ps-4">{t("ELEMENT_RESULTS.highlight_elements")}</span>
+                  <span className="ama-typography-body p-2">
+                    <div style={{display: "block"}} id={'showAllElements'}> 
+                      <ButtonsHighlight
+                        handleHighlight={() => handleHighlightAllElements()}
+                        themeClass={themeClass}
+                        theme={theme}
+                        txt={t("ELEMENT_RESULTS.result.actions.highlight")}
+                      />
+                    </div>
+                    <div style={{display: "none"}} id={'hideAllElements'}> 
+                      <ButtonsHighlight
+                        handleHighlight={() => handleUnhighlightAllElements()}
+                        themeClass={themeClass}
+                        theme={theme}
+                        txt={t("ELEMENT_RESULTS.result.actions.hide")}
+                      />
+                    </div>
+                  </span>
                 </div>
               </div>
             </div>
