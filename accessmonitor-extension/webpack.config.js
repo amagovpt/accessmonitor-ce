@@ -57,12 +57,10 @@ const config = {
                 { from: 'node_modules/@qualweb/act-rules/dist/__webpack/act.bundle.js', to: 'act.js' },
                 { from: 'node_modules/@qualweb/wcag-techniques/dist/__webpack/wcag.bundle.js', to: 'wcag.js' },
                 { from: 'node_modules/@qualweb/best-practices/dist/__webpack/bp.bundle.js', to: 'bp.js' },
-                { from: 'src/locales/en.js', to: 'locales/en.js' },
                 { from: 'src/sidepanel/evaluate.js', to: 'sidepanel/evaluate.js' },
                 { from: 'src/sidepanel/middleware.js', to: 'sidepanel/middleware.js' },
                 { from: 'src/sidepanel/highlight.js', to: 'sidepanel/highlight.js' },
-                { from: 'src/sidepanel/sidepanel.html', to: 'sidepanel/sidepanel.html', transform: { transformer: transformHtml, cache: true } },
-                { from: 'manifest.json', to: 'manifest.json' },
+                { from: 'src/sidepanel/sidepanel.html', to: 'sidepanel/sidepanel.html', transform: { transformer: transformHtml, cache: true } }
             ],
         }),
     ],

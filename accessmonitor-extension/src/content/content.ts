@@ -77,7 +77,7 @@ function evaluateACT() {
   window.act = new ACTRulesRunner({ translate: locale_en, fallback: locale_en });
 
   window.act.test({ sourceHtml });
-  actResult =  window.act.getReport();
+  actResult = window.act.getReport();
 
   console.log(actResult);
 

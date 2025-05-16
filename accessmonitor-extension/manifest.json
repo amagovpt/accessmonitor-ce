@@ -26,7 +26,6 @@
             "js": [
                 "dist/qwPage.js",
                 "dist/util.js",
-                "dist/locales/en.js",
                 "dist/act.js",
                 "dist/content.js",
                 "dist/wcag.js",

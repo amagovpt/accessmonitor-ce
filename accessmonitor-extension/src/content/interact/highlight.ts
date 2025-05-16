@@ -37,7 +37,7 @@ export function highlightAllElmnts(codes: string[]): boolean {
                 if (style.includes('border: none;')) {
                     const newStyle = style.replace('border: none;', 'border: 2px solid red;');
                     element.setAttribute('style', newStyle);
-                } else {
+                } else if (!style.includes('border: 2px solid red;')) {
                     const newStyle = style.concat(' border: 2px solid red;');
                     element.setAttribute('style', newStyle);
                 }
