@@ -176,6 +176,7 @@
       "inline_css_tab": "Inline CSS",
       "embedded_css_tab": "Embedded CSS",
       "caption": "Result {{ value }} of the practice",
+      "highlight_elements": "Highlight elements:",
       "result": {
         "actions": {
           "highlight": "Highlight",

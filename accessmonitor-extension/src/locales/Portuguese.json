@@ -175,6 +175,7 @@
       "inline_css_tab": "Estilos em linha",
       "embedded_css_tab": "Estilos embutidos",
       "caption": "Resultado {{ value }} da prática",
+      "highlight_elements": "Destacar elementos:",
       "result": {
         "actions": {
           "highlight": "Destacar",

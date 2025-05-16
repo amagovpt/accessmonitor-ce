@@ -34,7 +34,7 @@ export function ButtonsHighlight({ handleHighlight, themeClass, theme, txt }) {
           <Button
             darkTheme={theme}
             size="md"
-            variant="secondary"
+            variant="primary"
             text={txt}
             onClick={handleHighlight}
           />
