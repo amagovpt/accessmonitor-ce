@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Access Monitor Extension",
+    "name": "AccessMonitor Extension",
     "description": "Accessibility Evaluation using AccessMonitor",
     "version": "1.0",
     "background": {
