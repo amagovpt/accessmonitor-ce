@@ -35,7 +35,7 @@ const config = {
             {
                 test: /\.jsx?$/,
                 use: [{
-                    loader: "ts-loader",
+                    loader: 'ts-loader',
                     options: {
                         compilerOptions: { noEmit: false },
                     }
@@ -60,7 +60,10 @@ const config = {
                 { from: 'src/sidepanel/evaluate.js', to: 'sidepanel/evaluate.js' },
                 { from: 'src/sidepanel/middleware.js', to: 'sidepanel/middleware.js' },
                 { from: 'src/sidepanel/highlight.js', to: 'sidepanel/highlight.js' },
-                { from: 'src/sidepanel/sidepanel.html', to: 'sidepanel/sidepanel.html', transform: { transformer: transformHtml, cache: true } }
+                { from: 'src/sidepanel/sidepanel.html', to: 'sidepanel/sidepanel.html', transform: { transformer: transformHtml, cache: true } },
+                { from: 'public/fonts/AMA.ttf', to: 'public/fonts/AMA.ttf' },
+                { from: 'public/fonts/AMA.woff', to: 'public/fonts/AMA.woff' },
+                { from: 'manifest.json', to: 'manifest.json' }
             ],
         }),
     ],

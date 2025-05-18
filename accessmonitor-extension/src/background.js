@@ -9,7 +9,7 @@ chrome.action.onClicked.addListener((tab) => {
   if (tab.id) {
     chrome.sidePanel.setOptions({
       tabId: tab.id,
-      path: "src/sidepanel/sidepanel.html",
+      path: "./sidepanel/sidepanel.html",
       enabled: true,
     });
     chrome.sidePanel.open({ tabId: tab.id });
