@@ -10,21 +10,8 @@
         "default_title": "AccessMonitor Extension"
     },
     "permissions": [
-        "storage",
         "sidePanel",
-        "activeTab",
-        "tabs",
-        "scripting",
-        "debugger"
-    ],
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "public/fonts/*.woff",
-                "public/fonts/*.ttf"
-            ],
-            "matches": ["<all_urls>"]
-        }
+        "tabs"
     ],
     "content_security_policy": {
       "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
