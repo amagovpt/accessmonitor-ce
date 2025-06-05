@@ -81,6 +81,20 @@ async function evaluateBP() {
   });
 }
 
+async function evaluateCounter() {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: "evaluateCounter" },
+        (response) => {
+          resolve(response);
+        }
+      );
+    });
+  });
+}
+
 function endingEvaluation() {
   return new Promise((resolve, reject) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

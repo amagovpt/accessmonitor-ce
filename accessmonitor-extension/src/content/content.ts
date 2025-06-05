@@ -3,6 +3,7 @@ import { addValuesToSummary } from '../utils/evaluationHelpers';
 import { Summary } from '../utils/types';
 import { getTestRslts, parseEvaluation, processData } from './evaluation/middleware';
 import { highlightAllElmnts, highlightElmnt, unhighlightAllElmnts } from './interact/highlight';
+import { executeCounter } from "@qualweb/counter";
 
 let summary: Summary = { passed: 0, failed: 0, warning: 0, inapplicable: 0, title: document.title };
 
@@ -28,6 +29,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case "evaluateBP":
       const bpResult = evaluateBP();
       sendResponse(bpResult);
+      break;
+    case "evaluateCounter":
+      const counterResult = evaluateCounter();
+      sendResponse(counterResult);
       break;
     case "endingEvaluation":
       sendResponse(summary);
@@ -118,4 +123,17 @@ function evaluateBP() {
   addValuesToSummary(summary, bpResult);
   
   return bpResult;
+}
+
+function evaluateCounter() {
+  let counterResult;
+
+  console.log("Running Counter");
+
+  let sourceHtml = document.documentElement.outerHTML;
+  counterResult = executeCounter({sourceHtml});
+
+  console.log(counterResult);
+  
+  return counterResult;
 }
