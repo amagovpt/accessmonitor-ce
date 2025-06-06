@@ -76,7 +76,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
                 <div className="icon_and_text">
                   <Icon name="AMA-Check-Line" />
 
-                  <span className="title">{ok}</span>
+                  <span className="title">{ok} ({allvalues.ok})</span>
                 </div>
                 <div
                   className="overlay overlay_aceptable"
@@ -118,7 +118,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
               <div className="acceptable_container">
                 <div className="icon_and_text">
                   <Icon name="AMA-Middle-Line" />
-                  <span className="title">{warning}</span>
+                  <span className="title">{warning} ({allvalues.war})</span>
                 </div>
                 <div
                   className="overlay overlay_manual"
@@ -162,7 +162,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
                 <div className="icon_and_text">
                   <Icon name="AMA-Wrong-Line" />
 
-                  <span className="title">{error}</span>
+                  <span className="title">{error} ({allvalues.err})</span>
                 </div>
 
                 <div

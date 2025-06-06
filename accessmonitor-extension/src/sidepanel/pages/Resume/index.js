@@ -291,6 +291,17 @@ export default function Resume({ setAllData, setEle }) {
               </div>
             </div>
             <div className="d-flex flex-row justify-content-between size_and_table_container">
+              <div className="size_container d-flex flex-column gap-4">
+                <div className="d-flex flex-column">
+                  <span>{dataProcess?.metadata?.n_elements}</span>
+                  <span>{t("RESULTS.summary.metadata.n_elements_label")}</span>
+                </div>
+
+                <div className="d-flex flex-column">
+                  <span>{dataProcess?.metadata?.size}</span>
+                  <span>{t("RESULTS.summary.metadata.page_size_label")}</span>
+                </div>
+              </div>
               <div className="table_container_sumary">
                 <StatsTable
                   data={{data: dataProcess}}
