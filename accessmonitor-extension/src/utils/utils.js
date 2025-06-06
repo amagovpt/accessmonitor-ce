@@ -1,5 +1,6 @@
 import tests from "../content/evaluation/tests";
 import { saveAs } from "file-saver";
+import { Buffer } from "buffer";
 
 export function validateURL(url) {
   try {
@@ -42,7 +43,7 @@ export function convertBytes(length) {
   }
 }
 
-export function downloadCSV(nEvals, dataProcess, originalData, t) {
+export function downloadCSV(nEvals, pagecode, dataProcess, originalData, t) {
   const data = [];
 
   let error, level, sc, desc, num;
@@ -123,13 +124,25 @@ export function downloadCSV(nEvals, dataProcess, originalData, t) {
   }
   csvContent += "\r\n\r\n";
 
-  const evals = [];
-  evals.push("Total page evaluations");
-  const n_evals = [];
-  n_evals.push(nEvals);
+  const footer_headers = [];
+  footer_headers.push("Total page evaluations");
+  footer_headers.push("Pagecode");
+  footer_headers.push("Tot");
+  footer_headers.push("Nodes");
+  footer_headers.push("Errors");
+  footer_headers.push("Tags");
+  footer_headers.push("Roles");
+  const footer_vals = [];
+  footer_vals.push(nEvals);
+  footer_vals.push(Buffer.from(pagecode).toString("base64"));
+  footer_vals.push(Buffer.from(JSON.stringify(originalData.tot)).toString("base64"));
+  footer_vals.push(Buffer.from(JSON.stringify(originalData.nodes)).toString("base64"));
+  footer_vals.push(Buffer.from(JSON.stringify(originalData.elems)).toString("base64"));
+  footer_vals.push(JSON.stringify(originalData.tot.info.cTags));
+  footer_vals.push(JSON.stringify(originalData.tot.info.roles));
   
-  csvContent += evals.join(";") + "\r\n";
-  csvContent += n_evals.join(";") + "\r\n";
+  csvContent += footer_headers.join(";") + "\r\n";
+  csvContent += footer_vals.join(";") + "\r\n";
 
   const blob = new Blob([csvContent], { type: "text/csv" });
   saveAs(blob, "eval.csv");

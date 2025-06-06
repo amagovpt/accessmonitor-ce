@@ -274,8 +274,8 @@ function parse(evaluation: any): any {
   report["data"].tot.info.title = clone(report["data"].title);
   report["data"].tot.info.date = clone(report["data"].date);
   report["data"].tot.info.htmlTags = count_html_tags(evaluation.system.page.dom.html); //evaluation.system.page.dom.elementCount;
-  // report["data"].tot.info.roles = evaluation.modules.counter.data.roles;
-  // report["data"].tot.info.cTags = evaluation.modules.counter.data.tags;
+  report["data"].tot.info.roles = evaluation.modules.counter.data.roles;
+  report["data"].tot.info.cTags = evaluation.modules.counter.data.tags;
   report["data"].tot.info.size =
     encodeURI(report.pagecode).split(/%..|./).length - 1;
   //report['data'].tot.info.cssRules = calculateCssRules(evaluation);

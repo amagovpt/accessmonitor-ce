@@ -12,7 +12,7 @@ import { ButtonsActions } from "./_components/buttons-revalidation";
 import { optionForAccordion, callbackImgT } from "./utils";
 
 import { pathURL } from "../../App";
-import { reset, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData, setNEvals, setCsvData, setCsvProcessedData } from "../../store/slice/evaluationSlice";
+import { reset, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData, setNEvals, setCsvData, setCsvProcessedData, setCounter } from "../../store/slice/evaluationSlice";
 
 import { downloadCSV } from  "../../../utils/utils";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -66,7 +66,7 @@ export default function Resume({ setAllData, setEle }) {
     report.metadata.inapplicable = evaluation.summary.inapplicable;
     // report.system.page.dom.elementCount = evaluation.dom.elementCount; !! TODO
     report.modules = {};
-    // report.modules.counter = evaluation.counter; !! TODO
+    report.modules["counter"] = evaluation.counter;
     report.modules["act-rules"] = evaluation.act;
     report.modules["wcag-techniques"] = evaluation.wcag;
     report.modules["best-practices"] = evaluation.bp;
@@ -177,7 +177,7 @@ export default function Resume({ setAllData, setEle }) {
     setTotalEvals(totalEvals + 1);
 
     // EVALUATE PAGE
-    let act, bp, html, summary, url, wcag;
+    let act, bp, counter, html, summary, url, wcag;
 
     // get page's url
     url = await getUrl();
@@ -202,11 +202,15 @@ export default function Resume({ setAllData, setEle }) {
     bp = await evaluateBP();
     dispatch(setBP(bp));
 
+    // run counter
+    counter = await evaluateCounter();
+    dispatch(setCounter(counter));
+
     // finish evaluation
     summary = await endingEvaluation();
     dispatch(setSummary(summary));
 
-    if (act && wcag && bp) {
+    if (act && wcag && bp && counter) {
       dispatch(setEvaluated());
     }
 
@@ -265,7 +269,7 @@ export default function Resume({ setAllData, setEle }) {
           !error ? <ButtonsActions
             reRequest={reRequest}
             seeCode={seeCode}
-            downloadCSV={() => downloadCSV(totalEvals, csvDataProcess, csvOriginalData, t)}
+            downloadCSV={() => downloadCSV(totalEvals, originalData.pagecode || "html", csvDataProcess, csvOriginalData, t)}
             href={dataProcess?.metadata?.url}
             themeClass={themeClass}
           /> : <h3>{error}</h3>
@@ -287,6 +291,17 @@ export default function Resume({ setAllData, setEle }) {
               </div>
             </div>
             <div className="d-flex flex-row justify-content-between size_and_table_container">
+              <div className="size_container d-flex flex-column gap-4">
+                <div className="d-flex flex-column">
+                  <span>{dataProcess?.metadata?.n_elements}</span>
+                  <span>{t("RESULTS.summary.metadata.n_elements_label")}</span>
+                </div>
+
+                <div className="d-flex flex-column">
+                  <span>{dataProcess?.metadata?.size}</span>
+                  <span>{t("RESULTS.summary.metadata.page_size_label")}</span>
+                </div>
+              </div>
               <div className="table_container_sumary">
                 <StatsTable
                   data={{data: dataProcess}}

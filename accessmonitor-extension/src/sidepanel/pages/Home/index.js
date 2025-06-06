@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Icon } from "ama-design-system";
 
 import { pathURL } from "../../App";
-import { setACT, setBP, setDom, setEvaluated, setNEvals, setSummary, setURL, setWCAG } from '../../store/slice/evaluationSlice';
+import { setACT, setBP, setCounter, setDom, setEvaluated, setNEvals, setSummary, setURL, setWCAG } from '../../store/slice/evaluationSlice';
 
 import { ThemeContext } from "../../../context/ThemeContext";
 
@@ -25,7 +25,7 @@ export default function Home() {
     }
 
     const evaluate = async () => {
-        let act, bp, html, summary, url, wcag;
+        let act, bp, counter, html, summary, url, wcag;
 
         // get page's url
         url = await getUrl();
@@ -50,11 +50,14 @@ export default function Home() {
         bp = await evaluateBP();
         dispatch(setBP(bp));
 
+        counter = await evaluateCounter();
+        dispatch(setCounter(counter));
+
         // finish evaluation
         summary = await endingEvaluation();
         dispatch(setSummary(summary));
 
-        if (act && wcag && bp) {
+        if (act && wcag && bp && counter) {
             dispatch(setEvaluated());
             dispatch(setNEvals());
             setEvltd(true);
