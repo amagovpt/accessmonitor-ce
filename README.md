@@ -1,7 +1,7 @@
 # accessmonitor-ce
 
 AccessMonitor Chrome Extension<br>
-(versão beta)
+(versão 1.0)
 
 A presente extensão está em vias de ser publicada na _Chrome Web Store da Google_, mas já a pode usar instalando o código diretamente no seu _browser Chrome_ seguindo os seguintes passos:
 
@@ -25,15 +25,16 @@ Nesta página, verifique se no canto superior direito a opção "Modo de Program
 
 ![ativar modo de programador](https://github.com/user-attachments/assets/8441df71-4977-4a8b-b4ed-58c3bebbc5c6)
 
-A ativação desta opção fará surgir no canto superior esquerdo o botão "Carregar expandida". 
+A ativação desta opção fará surgir no canto superior esquerdo o botão "Carregar expandida". Se tem alguma versão da extensão do AccessMonitor já instalada, remova-a antes de instalar a nova. O cartão da extensão tem um botão "Remover" para esse efeito. Pressione nele e confirme a sua remoção, sem medos :-) . 
 
 ![botão carregar expandida](https://github.com/user-attachments/assets/bd68cc92-1069-49e3-b18e-dd93daf0094f)
 
-Pressione no botão "carregar expandida" e selecione a pasta `/accessmonitor-extension/` que está dentro da pasta que descompactou no passo anterior. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
+Pressione no botão "carregar expandida" e selecione a pasta `/dist` que está dentro da subpasta `/accessmonitor-ce` da pasta que descarregou no passo anterior. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
 
-![seleciona a pasta accessmonitor-extension e pressiona o botão selecionarimagem](https://github.com/user-attachments/assets/8c542232-a3dd-423d-b15b-e1cbe03c4d64)
+![selecioe a subpasta /dist que se encontra na pasta /accessmonitor-ce e pressione o botão selecionar](https://github.com/user-attachments/assets/d4563b4e-10e6-4fd4-bae5-41ab459e0843)
 
-3. Verifique que a extensão está ativa e fixe-a na barra de ferramentas
+
+3. Verifique se a extensão está ativa e fixe-a na barra de ferramentas
 
 
 Isto fará surgir a extensão na página. No seu cartão, verifique que está ativa (ver botão no canto inferior direito do cartão).
@@ -44,7 +45,7 @@ Ative também em "Detalhe" a opção "Fixar na barra de ferramentas"
 
 ![ative a opção Fixar na Barra de Ferramentas](https://github.com/user-attachments/assets/d9c1fa53-9881-446f-a09e-aadb071450c4)
 
-No canto superior direito do seu _browser Chrome_ vai surgir o botão "A" (AccessMonitor) que lhe permite usar a extensão.
+Isto fará com que no canto superior direito do seu _browser Chrome_ surja o botão "A" (AccessMonitor) que lhe permite usar a extensão em qualquer página web.
 
 ![botão de ativação da extensão AccessMonitor](https://github.com/user-attachments/assets/40ecc3f9-72bc-456e-8c56-5a757976bf6c)
 
