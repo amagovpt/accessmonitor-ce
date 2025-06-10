@@ -9,9 +9,8 @@ import { Button, Icon } from 'ama-design-system';
 
 export function ButtonsActions({
   reRequest,
-  seeCode,
   downloadCSV,
-  href,
+  downloadUploadableCSV,
   themeClass,
 }) {
   const { t } = useTranslation();
@@ -37,12 +36,12 @@ export function ButtonsActions({
             onClick={() => reRequest()}
           />
 
-          {/* <div>
+          <div>
             <Button
               id="dropdownMenuButton"
               size="md"
               variant="secondary"
-              text={t("RESULTS.actions.see_page")}
+              text={t("RESULTS.actions.download")}
               iconRight={
                 <Icon
                   name={seePage ? "AMA-SetaCima3-Line" : "AMA-SetaBaixo3-Line"}
@@ -57,61 +56,25 @@ export function ButtonsActions({
                 aria-labelledby="dropdownMenuButton"
               >
                 <li>
-                  <button onClick={() => seeCode()}>
-                    <span>{t("RESULTS.actions.pagecode")}</span>
-                    <Icon name="AMA-Code-Line" />
+                  <button onClick={downloadCSV} download="eval.csv">
+                    <span>{t("RESULTS.actions.download_simple")}</span>
+                    <Icon name="AMA-DownloadSetacurta-Line" />
+                  </button>
+                </li>
+                <li>
+                  <button onClick={downloadUploadableCSV} download="eval_mymonitor.csv">
+                    <span>{t("RESULTS.actions.download_uploadable")}</span>
+                    <Icon name="AMA-DownloadSetacurta-Line" />
                   </button>
                 </li>
               </u>
             )}
-          </div> */}
-
-          <div>
-            <Button
-              size="md"
-              variant="secondary"
-              text={t("RESULTS.actions.download")}
-              iconRight={<Icon name="AMA-DownloadSetacurta-Line" />}
-              onClick={downloadCSV}
-              download="eval.csv"
-            />
           </div>
         </div>
       </div>
 
       <div className={`group_mobile ${themeClass}`}>
         <div className="firstGroupContainer">
-          {/* <div>
-            <Button
-              id="dropdownMenuButton"
-              size="md"
-              variant="secondary"
-              text={t("RESULTS.actions.see_page")}
-              iconRight={
-                <Icon
-                  name={seePage ? "AMA-SetaCima3-Line" : "AMA-SetaBaixo3-Line"}
-                />
-              }
-              onClick={openPageLinks}
-              aria-expanded={seePage}
-            />
-            {seePage && (
-              <u
-                className="dropdown-content show_dropdown"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <li>
-                  <button onClick={() => seeCode()}>
-                    <span>{t("RESULTS.actions.pagecode")}</span>
-                    <Icon name="AMA-Code-Line" />
-                  </button>
-                </li>
-              </u>
-            )}
-          </div> */}
-        </div>
-
-        <div className="secondGroupContainer">
           <Button
             size="md"
             variant="secondary"
@@ -119,16 +82,42 @@ export function ButtonsActions({
             iconRight={<Icon name="AMA-Reload-Line" />}
             onClick={() => reRequest()}
           />
+        </div>
 
+        <div className="secondGroupContainer">
           <div>
             <Button
+              id="dropdownMenuButton"
               size="md"
               variant="secondary"
               text={t("RESULTS.actions.download")}
-              iconRight={<Icon name="AMA-DownloadSetacurta-Line" />}
-              onClick={downloadCSV}
-              download="eval.csv"
+              iconRight={
+                <Icon
+                  name={seePage ? "AMA-SetaCima3-Line" : "AMA-SetaBaixo3-Line"}
+                />
+              }
+              onClick={openPageLinks}
+              aria-expanded={seePage}
             />
+            {seePage && (
+              <u
+                className="dropdown-content show_dropdown"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <button onClick={downloadCSV}>
+                    <span>{t("RESULTS.actions.download_simple")}</span>
+                    <Icon name="AMA-DownloadSetacurta-Line" />
+                  </button>
+                </li>
+                <li>
+                  <button onClick={downloadUploadableCSV}>
+                    <span>{t("RESULTS.actions.download_uploadable")}</span>
+                    <Icon name="AMA-DownloadSetacurta-Line" />
+                  </button>
+                </li>
+              </u>
+            )}
           </div>
         </div>
       </div>

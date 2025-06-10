@@ -116,3 +116,17 @@ async function getUrl() {
     });
   });
 }
+
+async function updateCSVDataProcess(newData, oldData) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: "updateCSVDataProcess", message: { newData: newData, oldData: oldData } },
+        (response) => {
+          resolve(response);
+        }
+      );
+    });
+  });
+}

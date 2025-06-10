@@ -43,7 +43,7 @@ export function convertBytes(length) {
   }
 }
 
-export function downloadCSV(nEvals, pagecode, dataProcess, originalData, t) {
+export function downloadCSV(nEvals, dataProcess, originalData, t) {
   const data = [];
 
   let error, level, sc, desc, num;
@@ -122,28 +122,41 @@ export function downloadCSV(nEvals, pagecode, dataProcess, originalData, t) {
   for (const row of data || []) {
     csvContent += row.join(";") + "\r\n";
   }
-  csvContent += "\r\n\r\n";
-
-  const footer_headers = [];
-  footer_headers.push("Total page evaluations");
-  footer_headers.push("Pagecode");
-  footer_headers.push("Tot");
-  footer_headers.push("Nodes");
-  footer_headers.push("Errors");
-  footer_headers.push("Tags");
-  footer_headers.push("Roles");
-  const footer_vals = [];
-  footer_vals.push(nEvals);
-  footer_vals.push(Buffer.from(pagecode).toString("base64"));
-  footer_vals.push(Buffer.from(JSON.stringify(originalData.tot)).toString("base64"));
-  footer_vals.push(Buffer.from(JSON.stringify(originalData.nodes)).toString("base64"));
-  footer_vals.push(Buffer.from(JSON.stringify(originalData.elems)).toString("base64"));
-  footer_vals.push(JSON.stringify(originalData.tot.info.cTags));
-  footer_vals.push(JSON.stringify(originalData.tot.info.roles));
+  csvContent += "\r\n";
   
-  csvContent += footer_headers.join(";") + "\r\n";
-  csvContent += footer_vals.join(";") + "\r\n";
+  csvContent += "Total page evaluations;\r\n";
+  csvContent += nEvals + ";\r\n";
 
   const blob = new Blob([csvContent], { type: "text/csv" });
   saveAs(blob, "eval.csv");
+}
+
+export function downloadUploadableCSV(pagecode, originalData) {
+  const headers = [];
+  headers.push("Pagecode");
+  headers.push("Conformant");
+  headers.push("Tot");
+  headers.push("Nodes");
+  headers.push("Errors");
+  headers.push("Tags");
+  headers.push("Roles");
+  headers.push("Score");
+  headers.push("Date");
+
+  const vals = [];
+  vals.push(Buffer.from(pagecode).toString("base64"));
+  vals.push(originalData.conform);
+  vals.push(Buffer.from(JSON.stringify(originalData.tot)).toString("base64"));
+  vals.push(Buffer.from(JSON.stringify(originalData.nodes)).toString("base64"));
+  vals.push(Buffer.from(JSON.stringify(originalData.elems)).toString("base64"));
+  vals.push(JSON.stringify(originalData.tot.info.cTags));
+  vals.push(JSON.stringify(originalData.tot.info.roles));
+  vals.push(originalData.score.replace(".", ","));
+  vals.push(originalData.date);
+
+  let csvContent = headers.join(";") + "\r\n";
+  csvContent += vals.join(";") + "\r\n";
+
+  const blob = new Blob([csvContent], { type: "text/csv" });
+  saveAs(blob, "eval_mymonitor.csv");
 }

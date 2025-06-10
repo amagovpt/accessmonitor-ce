@@ -2,6 +2,7 @@ import { locale_en } from '../locales/en';
 import { addValuesToSummary } from '../utils/evaluationHelpers';
 import { Summary } from '../utils/types';
 import { getTestRslts, parseEvaluation, processData } from './evaluation/middleware';
+import { updateCSVProcData } from './evaluation/csv';
 import { highlightAllElmnts, highlightElmnt, unhighlightAllElmnts } from './interact/highlight';
 import { executeCounter } from "@qualweb/counter";
 
@@ -62,6 +63,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case "unhighlightAllElements":
       const unhighlighted = unhighlightAllElmnts(request.message);
       sendResponse(unhighlighted);
+      break;
+    case "updateCSVDataProcess":
+      const { newData, oldData } = request.message;
+      const updatedData = updateCSVProcData(newData, oldData);
+      sendResponse(updatedData);
       break;
     default:
       console.error("Unknown action:", request.action);
@@ -125,6 +131,16 @@ function evaluateBP() {
   return bpResult;
 }
 
+function countElements(tags) {
+  let totalElems = 0;
+
+  for (const val of tags) {
+    totalElems += val;
+  }
+
+  return totalElems;
+}
+
 function evaluateCounter() {
   let counterResult;
 
@@ -132,6 +148,8 @@ function evaluateCounter() {
 
   let sourceHtml = document.documentElement.outerHTML;
   counterResult = executeCounter({sourceHtml});
+
+  counterResult.elementCount = countElements(Object.values(counterResult?.data?.tags));
 
   console.log(counterResult);
   
