@@ -92,6 +92,8 @@
         "back": "Voltar",
         "re_evaluate": "Re-avaliar a página",
         "download": "Descarregar dados em CSV",
+        "download_simple": "Descarregar",
+        "download_uploadable": "Descarregar para importar no My Monitor",
         "see_page": "Ver página",
         "pagecode": "Ver código da página",
         "open_webpage": "Abrir página web"

@@ -8,6 +8,7 @@ export const evaluationSlice = createSlice({
     act: {},
     bp: {},
     wcag: {},
+    counter: {},
     dom: {},
     url: '',
     data: {},
@@ -26,6 +27,9 @@ export const evaluationSlice = createSlice({
     },
     setWCAG: (state, action) => {
       state.wcag = action.payload;
+    },
+    setCounter: (state, action) => {
+      state.counter = action.payload;
     },
     setSummary: (state, action) => {
       state.summary = action.payload;
@@ -63,6 +67,7 @@ export const evaluationSlice = createSlice({
       state.act = {};
       state.bp = {};
       state.wcag = {};
+      state.counter = {};
       state.dom = {};
       state.url = '';
       state.data = {};
@@ -73,6 +78,6 @@ export const evaluationSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setACT, setBP, setWCAG, setSummary, setEvaluated, setDom, setURL, setData, setProcessedData, setCsvData, setCsvProcessedData, setNEvals, setPageCode, reset } = evaluationSlice.actions;
+export const { setACT, setBP, setWCAG, setCounter, setSummary, setEvaluated, setDom, setURL, setData, setProcessedData, setCsvData, setCsvProcessedData, setNEvals, setPageCode, reset } = evaluationSlice.actions;
 
 export default evaluationSlice.reducer;
