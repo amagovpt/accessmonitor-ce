@@ -12,7 +12,7 @@ import { ButtonsActions } from "./_components/buttons-revalidation";
 import { optionForAccordion, callbackImgT } from "./utils";
 
 import { pathURL } from "../../App";
-import { reset, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData, setNEvals, setCsvData, setCsvProcessedData, setCounter } from "../../store/slice/evaluationSlice";
+import { reset, resetCsv, setURL, setDom, setACT, setWCAG, setBP, setSummary, setEvaluated, setPageCode, setData, setProcessedData, setNEvals, setCsvData, setCsvProcessedData, setCounter } from "../../store/slice/evaluationSlice";
 
 import { downloadCSV, downloadUploadableCSV } from  "../../../utils/utils";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -152,17 +152,28 @@ export default function Resume({ setAllData, setEle }) {
   }, [dataProcess]);
 
   const reRequest = async () => {
+    // GET CURRENT AND PREVIOUS PAGES URLS
+    const newUrl = await getUrl();
+    const oldUrl = evaluation.url;
+
     // DELETE STORED VALUES
     dispatch(reset());
+
+    // DELETE CSV VALUES IF WE'RE EVALUATING A DIFFERENT PAGE
+    const differentPage = newUrl !== oldUrl;
+    if (differentPage) {
+      dispatch(resetCsv());
+    }
+
+    // STORE NUMBER OF EVALS PERFORMED TO PAGE
     dispatch(setNEvals());
-    setTotalEvals(totalEvals + 1);
+    setTotalEvals(differentPage ? 1 : totalEvals + 1);
 
     // EVALUATE PAGE
-    let act, bp, counter, html, summary, url, wcag;
+    let act, bp, counter, html, summary, wcag;
 
-    // get page's url
-    url = await getUrl();
-    dispatch(setURL(url));
+    // store page's url
+    dispatch(setURL(newUrl));
     
     // start evaluation
     await startEvaluation();

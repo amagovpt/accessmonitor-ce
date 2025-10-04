@@ -73,11 +73,16 @@ export const evaluationSlice = createSlice({
       state.data = {};
       state.processedData = {};
       state.pageCode = '';
-    }
+    },
+    resetCsv: (state) => {
+      state.csvData = {};
+      state.csvProcessedData = {};
+      state.nEvals = 0;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setACT, setBP, setWCAG, setCounter, setSummary, setEvaluated, setDom, setURL, setData, setProcessedData, setCsvData, setCsvProcessedData, setNEvals, setPageCode, reset } = evaluationSlice.actions;
+export const { setACT, setBP, setWCAG, setCounter, setSummary, setEvaluated, setDom, setURL, setData, setProcessedData, setCsvData, setCsvProcessedData, setNEvals, setPageCode, reset, resetCsv } = evaluationSlice.actions;
 
 export default evaluationSlice.reducer;
