@@ -200,36 +200,40 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
             </td>
           </tr>
 
-          {/* MOBILE */}
-          <div className="d-flex flex-row justify-content-end total_mobile mobile_row-container-total">
-            <div className="d-flex flex-column mobile-row">
-              <span>A</span>
-              <span>{sumValueA}</span>
-            </div>
+          <tr>
+            <th scope="row" className="border_right">
+              <div className="acceptable_container">
+                <div className="icon_and_text">
+                  <span className="title">Total ({data?.data?.metadata?.count_results})</span>
+                </div>
+              </div>
 
-            <div className="d-flex flex-column mobile-row">
-              <span>AA</span>
-              <span>{sumValueAA}</span>
-            </div>
+              {/* MOBILE */}
+              <div className="d-flex flex-row justify-content-end mobile_row-container">
+                <div className="d-flex flex-column mobile-row">
+                  <span>A</span>
+                  <span>{sumValueA}</span>
+                </div>
 
-            <div className="d-flex flex-column mobile-row">
-              <span>AAA</span>
-              <span>{sumValueAAA}</span>
-            </div>
-          </div>
+                <div className="d-flex flex-column mobile-row">
+                  <span>AA</span>
+                  <span>{sumValueAA}</span>
+                </div>
 
-          {/* DESK */}
-          <tr className="total_bottom-container">
-            <th scope="row" className="border-bottom-0 border_right sr-only">
-              <span className="heading_totals">Total</span>
+                <div className="d-flex flex-column mobile-row">
+                  <span>AAA</span>
+                  <span>{sumValueAAA}</span>
+                </div>
+              </div>
             </th>
-            <td className="border-bottom-0 border_right border_left heading_total total_bottom">
+            {/* DESKTOP */}
+            <td className="border_right body_text desk_row">
               {sumValueA}
             </td>
-            <td className="border-bottom-0 border_right heading_total total_bottom">
+            <td className="border_right body_text desk_row">
               {sumValueAA}
             </td>
-            <td className="border-bottom-0 border_right heading_total total_bottom">
+            <td className="border_right body_text desk_row">
               {sumValueAAA}
             </td>
           </tr>
