@@ -1,5 +1,4 @@
 import { Icon } from "ama-design-system";
-import React from "react";
 
 function sumValuesByKey(key, object) {
   if (!object) {
@@ -204,7 +203,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
             <th scope="row" className="border_right">
               <div className="acceptable_container">
                 <div className="icon_and_text">
-                  <span className="title">Total ({data?.data?.metadata?.count_results})</span>
+                  <span className="heading_totals">Total ({data?.data?.metadata?.count_results})</span>
                 </div>
               </div>
 
