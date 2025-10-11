@@ -1,10 +1,10 @@
 {
   "name": "accessmonitor-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@qualweb/act-rules": "^0.7.5",
-    "@qualweb/best-practices": "^0.7.6",
+    "@qualweb/best-practices": "^0.7.7",
     "@qualweb/core": "^0.8.4",
     "@qualweb/counter": "^0.3.2",
     "@qualweb/locale": "^0.2.2",

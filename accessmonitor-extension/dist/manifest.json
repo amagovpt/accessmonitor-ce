@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "AccessMonitor Extension",
     "description": "Accessibility Evaluation using AccessMonitor",
-    "version": "1.0",
+    "version": "1.0.1",
     "background": {
         "service_worker": "background.js"
     },
