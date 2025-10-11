@@ -133,6 +133,7 @@ export function downloadCSV(nEvals, dataProcess, originalData, t) {
 
 export function downloadUploadableCSV(pagecode, originalData) {
   const headers = [];
+  headers.push("URL");
   headers.push("Pagecode");
   headers.push("Conformant");
   headers.push("Tot");
@@ -144,6 +145,7 @@ export function downloadUploadableCSV(pagecode, originalData) {
   headers.push("Date");
 
   const vals = [];
+  vals.push(originalData.rawUrl);
   vals.push(Buffer.from(pagecode).toString("base64"));
   vals.push(originalData.conform);
   vals.push(Buffer.from(JSON.stringify(originalData.tot)).toString("base64"));
