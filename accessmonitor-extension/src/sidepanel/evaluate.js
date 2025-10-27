@@ -81,6 +81,20 @@ async function evaluateBP() {
   });
 }
 
+async function evaluateCounter() {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: "evaluateCounter" },
+        (response) => {
+          resolve(response);
+        }
+      );
+    });
+  });
+}
+
 function endingEvaluation() {
   return new Promise((resolve, reject) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -99,6 +113,20 @@ async function getUrl() {
   return new Promise((resolve, reject) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       resolve(tabs[0].url);
+    });
+  });
+}
+
+async function updateCSVDataProcess(newData, oldData) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: "updateCSVDataProcess", message: { newData: newData, oldData: oldData } },
+        (response) => {
+          resolve(response);
+        }
+      );
     });
   });
 }

@@ -1,5 +1,4 @@
 import { Icon } from "ama-design-system";
-import React from "react";
 
 function sumValuesByKey(key, object) {
   if (!object) {
@@ -76,7 +75,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
                 <div className="icon_and_text">
                   <Icon name="AMA-Check-Line" />
 
-                  <span className="title">{ok}</span>
+                  <span className="title">{ok} ({allvalues.ok})</span>
                 </div>
                 <div
                   className="overlay overlay_aceptable"
@@ -118,7 +117,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
               <div className="acceptable_container">
                 <div className="icon_and_text">
                   <Icon name="AMA-Middle-Line" />
-                  <span className="title">{warning}</span>
+                  <span className="title">{warning} ({allvalues.war})</span>
                 </div>
                 <div
                   className="overlay overlay_manual"
@@ -162,7 +161,7 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
                 <div className="icon_and_text">
                   <Icon name="AMA-Wrong-Line" />
 
-                  <span className="title">{error}</span>
+                  <span className="title">{error} ({allvalues.err})</span>
                 </div>
 
                 <div
@@ -200,36 +199,40 @@ const StatsTable = ({darkTheme, data, ok, warning, error, title, caption, type})
             </td>
           </tr>
 
-          {/* MOBILE */}
-          <div className="d-flex flex-row justify-content-end total_mobile mobile_row-container-total">
-            <div className="d-flex flex-column mobile-row">
-              <span>A</span>
-              <span>{sumValueA}</span>
-            </div>
+          <tr>
+            <th scope="row" className="border_right">
+              <div className="acceptable_container">
+                <div className="icon_and_text">
+                  <span className="heading_totals">Total ({data?.data?.metadata?.count_results})</span>
+                </div>
+              </div>
 
-            <div className="d-flex flex-column mobile-row">
-              <span>AA</span>
-              <span>{sumValueAA}</span>
-            </div>
+              {/* MOBILE */}
+              <div className="d-flex flex-row justify-content-end mobile_row-container">
+                <div className="d-flex flex-column mobile-row">
+                  <span>A</span>
+                  <span>{sumValueA}</span>
+                </div>
 
-            <div className="d-flex flex-column mobile-row">
-              <span>AAA</span>
-              <span>{sumValueAAA}</span>
-            </div>
-          </div>
+                <div className="d-flex flex-column mobile-row">
+                  <span>AA</span>
+                  <span>{sumValueAA}</span>
+                </div>
 
-          {/* DESK */}
-          <tr className="total_bottom-container">
-            <th scope="row" className="border-bottom-0 border_right sr-only">
-              <span className="heading_totals">Total</span>
+                <div className="d-flex flex-column mobile-row">
+                  <span>AAA</span>
+                  <span>{sumValueAAA}</span>
+                </div>
+              </div>
             </th>
-            <td className="border-bottom-0 border_right border_left heading_total total_bottom">
+            {/* DESKTOP */}
+            <td className="border_right body_text desk_row">
               {sumValueA}
             </td>
-            <td className="border-bottom-0 border_right heading_total total_bottom">
+            <td className="border_right body_text desk_row">
               {sumValueAA}
             </td>
-            <td className="border-bottom-0 border_right heading_total total_bottom">
+            <td className="border_right body_text desk_row">
               {sumValueAAA}
             </td>
           </tr>

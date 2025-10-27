@@ -1,5 +1,6 @@
 import tests from "../content/evaluation/tests";
 import { saveAs } from "file-saver";
+import { Buffer } from "buffer";
 
 export function validateURL(url) {
   try {
@@ -121,16 +122,43 @@ export function downloadCSV(nEvals, dataProcess, originalData, t) {
   for (const row of data || []) {
     csvContent += row.join(";") + "\r\n";
   }
-  csvContent += "\r\n\r\n";
-
-  const evals = [];
-  evals.push("Total page evaluations");
-  const n_evals = [];
-  n_evals.push(nEvals);
+  csvContent += "\r\n";
   
-  csvContent += evals.join(";") + "\r\n";
-  csvContent += n_evals.join(";") + "\r\n";
+  csvContent += "Total page evaluations;\r\n";
+  csvContent += nEvals + ";\r\n";
 
   const blob = new Blob([csvContent], { type: "text/csv" });
   saveAs(blob, "eval.csv");
+}
+
+export function downloadUploadableCSV(pagecode, originalData) {
+  const headers = [];
+  headers.push("URL");
+  headers.push("Pagecode");
+  headers.push("Conformant");
+  headers.push("Tot");
+  headers.push("Nodes");
+  headers.push("Errors");
+  headers.push("Tags");
+  headers.push("Roles");
+  headers.push("Score");
+  headers.push("Date");
+
+  const vals = [];
+  vals.push(originalData.rawUrl);
+  vals.push(Buffer.from(pagecode).toString("base64"));
+  vals.push(originalData.conform);
+  vals.push(Buffer.from(JSON.stringify(originalData.tot)).toString("base64"));
+  vals.push(Buffer.from(JSON.stringify(originalData.nodes)).toString("base64"));
+  vals.push(Buffer.from(JSON.stringify(originalData.elems)).toString("base64"));
+  vals.push(JSON.stringify(originalData.tot.info.cTags));
+  vals.push(JSON.stringify(originalData.tot.info.roles));
+  vals.push(originalData.score.replace(".", ","));
+  vals.push(originalData.date);
+
+  let csvContent = headers.join(";") + "\r\n";
+  csvContent += vals.join(";") + "\r\n";
+
+  const blob = new Blob([csvContent], { type: "text/csv" });
+  saveAs(blob, "eval_mymonitor.csv");
 }
