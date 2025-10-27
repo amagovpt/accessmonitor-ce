@@ -1,6 +1,6 @@
 {
   "name": "accessmonitor-extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "@qualweb/act-rules": "^0.7.5",
