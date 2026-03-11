@@ -1,4 +1,4 @@
-import tests from "../content/evaluation/tests";
+import {ruleset} from "@a12e/accessmonitor-rulesets";
 import { saveAs } from "file-saver";
 import { Buffer } from "buffer";
 
@@ -74,8 +74,9 @@ export function downloadCSV(nEvals, dataProcess, originalData, t) {
         "TESTS_RESULTS." +
         dataProcess["results"][row]["msg"] +
         (num === 1 ? ".s" : ".p");
-      sc = tests[dataProcess["results"][row]["msg"]]["scs"];
-      sc = sc.replace(/,/g, " ");
+      sc = ruleset[dataProcess["results"][row]["msg"]]["scs"];
+      sc = sc.map((s) => s.trim()).join(" ")|| "";
+
 
       descs.push(desc, error);
       rowData.push(
