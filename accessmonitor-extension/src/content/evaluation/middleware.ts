@@ -2,12 +2,9 @@ import * as htmlparser from "htmlparser2";
 import * as CSSselect from "css-select";
 import clone from "lodash.clone";
 
-import tests from "./tests";
-import testsColors from "./testsColors";
-
+import {testColors,successCriteria,ruleset} from "@a12e/accessmonitor-rulesets";
 import { getElementsMapping } from "./mapping";
 
-import scs from "../../utils/scs";
 
 import { generateMd5Hash } from "../lib/security";
 import { convertBytes } from "../../utils/utils";
@@ -93,7 +90,7 @@ function generateScore(report: any): string {
   let pon = 0;
 
   for (const test in report.data.tot.results) {
-    const value = tests[test];
+    const value = ruleset[test];
 
     if (value.result === "warning") {
       continue;
@@ -136,9 +133,9 @@ function generateScore(report: any): string {
 
     if (calc) {
       let temp = null;
-      if (tests[test]["type"] === "prop") {
+      if (ruleset[test]["type"] === "prop") {
         temp = calculateProp(value, report);
-      } else if (tests[test]["type"] === "decr") {
+      } else if (ruleset[test]["type"] === "decr") {
         temp = calculateDecr(value, report);
       } else {
         temp = calculateTrueFalse(value);
@@ -236,10 +233,10 @@ function calculateConform(results: any): string {
     AA: 0,
     AAA: 0,
   };
-  for (const ee in results || {}) {
-    if (ee) {
-      let level = tests[ee]["level"].toUpperCase();
-      if (testsColors[ee] === "R") {
+  for (const test in results || {}) {
+    if (test) {
+      let level = ruleset[test]["level"].toUpperCase();
+      if (testColors[test] === "R") {
         errors[level]++;
       }
     }
@@ -338,21 +335,21 @@ function process(tot: any, url?: any): any {
     },
   };
 
-  for (const test in tests) {
+  for (const test in ruleset) {
     if (test) {
       if (tot.results[test]) {
-        let tes = tests[test]["test"];
-        const lev = tests[test]["level"];
-        const ref = tests[test]["ref"];
-        const ele = tests[test]["elem"];
+        let tes = ruleset[test]["test"];
+        const lev = ruleset[test]["level"];
+        const ref = ruleset[test]["ref"];
+        const ele = ruleset[test]["elem"];
 
         let color;
 
-        if (testsColors[test] === "R") {
+        if (testColors[test] === "R") {
           color = "err";
-        } else if (testsColors[test] === "Y") {
+        } else if (testColors[test] === "Y") {
           color = "war";
-        } else if (testsColors[test] === "G") {
+        } else if (testColors[test] === "G") {
           color = "ok";
         }
 
@@ -392,12 +389,12 @@ function process(tot: any, url?: any): any {
 
         result["ref_website"] = refWebsite(ref);
         result["relation"] =
-          tests[test]["ref"].length > 3 ? "relationACT" : "relationT";
+          ruleset[test]["ref"].length > 3 ? "relationACT" : "relationT";
         result["ref_related_sc"] = new Array();
         result["value"] = tnum;
         result["prio"] = color === "ok" ? 3 : color === "err" ? 1 : 2;
 
-        const scstmp = tests[test]["scs"].split(",");
+        const scstmp = ruleset[test]["scs"];
 
         for (let s in scstmp) {
           if (s) {
@@ -405,10 +402,10 @@ function process(tot: any, url?: any): any {
             s = scstmp[s].trim();
             if (s !== "") {
               li["sc"] = s;
-              li["lvl"] = scs[s]["1"];
+              li["lvl"] = successCriteria[s].level;
               li["link"] =
-                "https://www.w3.org/WAI/WCAG21/Understanding/" +
-                scs[s]["0"] +
+                "https://www.w3.org/TR/UNDERSTANDING-WCAG20/" +
+                successCriteria[s].name +
                 ".html";
 
               result["ref_related_sc"].push(li);
@@ -587,10 +584,10 @@ function getElements(allNodes: any, ele: any, tot: any) {
 
   let result = "G";
   const results = dataTransform?.results?.map((r) => r.msg);
-  for (const test in tests || {}) {
-    const _test = tests[test];
+  for (const test in ruleset || {}) {
+    const _test = ruleset[test];
     if (_test.test === ele && results?.includes(test)) {
-      result = testsColors[test];
+      result = testColors[test];
       break;
     }
   }
