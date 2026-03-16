@@ -1,9 +1,9 @@
 # accessmonitor-ce
 
 AccessMonitor Chrome Extension<br>
-(versão 1.0.2)
+(versão 1.0.2 de 28 outubro 2025, disponível na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_)
 
-**Última atualização: 28 outubro 2025** - A presente versão da extensão (versão 1.0.2) encontra-se em vias de publicação na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_, mas já a pode usar instalando o código diretamente no seu _browser Chrome_ seguindo os seguintes passos:
+**Última atualização: 13 março 2026** - A presente versão da extensão (versão 1.0.3) encontra-se em vias de publicação na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_, mas já a pode usar instalando o código diretamente no seu _browser Chrome_ seguindo os seguintes passos:
 
 1. Descarregue o código do presente repositório para a sua máquina.
 
