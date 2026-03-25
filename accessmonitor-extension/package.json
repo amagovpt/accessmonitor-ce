@@ -3,10 +3,10 @@
   "version": "1.0.2",
   "private": true,
   "dependencies": {
-    "@a12e/accessmonitor-rulesets": "^1.0.2",
+    "@a12e/accessmonitor-rulesets": "^1.0.3",
     "@qualweb/act-rules": "^0.7.5",
     "@qualweb/best-practices": "^0.7.7",
-    "@qualweb/core": "^0.8.4",
+    "@qualweb/core": "^0.8.8",
     "@qualweb/counter": "^0.3.2",
     "@qualweb/locale": "^0.2.2",
     "@qualweb/qw-page": "^0.3.2",
