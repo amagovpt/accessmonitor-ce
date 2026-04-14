@@ -1,0 +1,70 @@
+name: release extension
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.changeset/**'
+  workflow_dispatch:
+
+jobs:
+  release:
+    if: github.repository == 'magovpt/accessmonitor-ce'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Upgrade npm
+        run: npm install -g npm@11.11.1
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create Release PR or Versioning
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: echo "Versioning complete, handing over to manual release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Archive Extension
+        id: extension_zip
+        if: github.ref_name == 'main' && steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          npm run build
+
+          VERSION=$(node -p "require('./package.json').version")
+          ZIP_FILE="accessmonitor-ce-extension-v${VERSION}.zip"
+
+          cd dist && zip -r "../$ZIP_FILE" . && cd ..
+
+          echo "zip_file=$ZIP_FILE" >> $GITHUB_OUTPUT
+          echo "tag_name=v$VERSION" >> $GITHUB_OUTPUT
+          echo "done=true" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release Artifact
+        if: steps.extension_zip.outputs.done == 'true'
+        run: |
+          echo "Creating Release for ${{ steps.extension_zip.outputs.tag_name }}"
+
+          gh release create "${{ steps.extension_zip.outputs.tag_name }}" "${{ steps.extension_zip.outputs.zip_file }}" \
+            --title "Release ${{ steps.extension_zip.outputs.tag_name }}" \
+            --generate-notes \
+            --latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

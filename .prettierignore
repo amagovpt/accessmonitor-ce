@@ -1,0 +1,8 @@
+dist/
+build/
+*.zip
+
+node_modules/
+
+package-lock.json
+.changeset/

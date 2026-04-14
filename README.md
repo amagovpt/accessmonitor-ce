@@ -11,7 +11,7 @@ AccessMonitor Chrome Extension<br>
 
 No repositório Git pressione no botão "Code" e depois use a subopção "Descarregar ZIP".
 
-No seu computador descompacte o ficheiro `accessmonitor-ce-main.zip` que acabou de descarregar e obterá a diretoria e o conteúdo seguinte: 
+No seu computador descompacte o ficheiro `accessmonitor-ce-main.zip` que acabou de descarregar e obterá a diretoria e o conteúdo seguinte:
 
 - /accessmonitor-ce-main/
   - /accessmonitor-extension/
@@ -25,7 +25,7 @@ Nesta página, verifique se no canto superior direito a opção "Modo de Program
 
 ![ativar modo de programador](https://github.com/user-attachments/assets/8441df71-4977-4a8b-b4ed-58c3bebbc5c6)
 
-A ativação desta opção fará surgir no canto superior esquerdo o botão "Carregar expandida". Se tem alguma versão da extensão do AccessMonitor já instalada, remova-a antes de instalar a nova. O cartão da extensão tem um botão "Remover" para esse efeito. Pressione nele e confirme a sua remoção, sem medos :-) . 
+A ativação desta opção fará surgir no canto superior esquerdo o botão "Carregar expandida". Se tem alguma versão da extensão do AccessMonitor já instalada, remova-a antes de instalar a nova. O cartão da extensão tem um botão "Remover" para esse efeito. Pressione nele e confirme a sua remoção, sem medos :-) .
 
 ![botão carregar expandida](https://github.com/user-attachments/assets/bd68cc92-1069-49e3-b18e-dd93daf0094f)
 
@@ -33,9 +33,7 @@ Pressione no botão "carregar expandida" e selecione a pasta `/dist` que está d
 
 ![selecioe a subpasta /dist que se encontra na pasta /accessmonitor-ce e pressione o botão selecionar](https://github.com/user-attachments/assets/d4563b4e-10e6-4fd4-bae5-41ab459e0843)
 
-
 3. Verifique se a extensão está ativa e fixe-a na barra de ferramentas
-
 
 Isto fará surgir a extensão na página. No seu cartão, verifique que está ativa (ver botão no canto inferior direito do cartão).
 
@@ -52,14 +50,3 @@ Isto fará com que no canto superior direito do seu _browser Chrome_ surja o bot
 Basta entrar na página da qual pretende fazer a sua avaliação, pressionar no botão "A" e no painel lateral que entretanto é aberto pressionar no botão "Validar".
 
 ![pressione no botão AccessMonitor para abrir a extensão](https://github.com/user-attachments/assets/c22e07c3-c463-4705-965b-e6bd46c02e16)
-
-
-
-
-
-
-
-
-
-
- 
