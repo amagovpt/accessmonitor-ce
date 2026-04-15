@@ -1,5 +1,11 @@
 # accessmonitor-extension
 
+## 1.0.4
+
+### Patch Changes
+
+- 1ea06f1: Update of tests mapping.
+
 ## 1.0.3
 
 ### Patch Changes
