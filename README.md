@@ -21,9 +21,9 @@ A ativação desta opção fará surgir no canto superior esquerdo o botão "Car
 
 ![botão carregar expandida](https://github.com/user-attachments/assets/bd68cc92-1069-49e3-b18e-dd93daf0094f)
 
-Pressione no botão "carregar expandida" e selecione a pasta `accessmonitor-ce-extension-v1.0.4/` que que descompactou no passo 2. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
+Pressione no botão "carregar expandida" e selecione a pasta `accessmonitor-ce-extension-v1.0.4/` que descompactou no passo 2. A seguir, pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
 
-![selecioe a subpasta /dist que se encontra na pasta /accessmonitor-ce e pressione o botão selecionar](https://github.com/user-attachments/assets/d4563b4e-10e6-4fd4-bae5-41ab459e0843)
+<img width="967" height="509" alt="selecione a pasta accessmonitor-ce-extension-v1.0.4 e pressione o botão selecionar" src="https://github.com/user-attachments/assets/cab2304b-cabe-4243-be8b-8098ddd75e3b" />
 
 4. Verifique se a extensão está ativa e fixe-a na barra de ferramentas
 
@@ -31,7 +31,7 @@ Isto fará surgir a extensão na página. No seu cartão, verifique que está at
 
 ![cartão da extensão AccessMonitor na página das extensões com estado ativo](https://github.com/user-attachments/assets/5966ca57-44cf-462b-83bc-37daecbea1fc)
 
-Ative também em "Detalhe" a opção "Fixar na barra de ferramentas"
+Ative também em "Detalhe" a opção "Fixar na barra de ferramentas".
 
 ![ative a opção Fixar na Barra de Ferramentas](https://github.com/user-attachments/assets/d9c1fa53-9881-446f-a09e-aadb071450c4)
 
@@ -42,3 +42,7 @@ Isto fará com que no canto superior direito do seu _browser Chrome_ surja o bot
 Basta entrar na página da qual pretende fazer a sua avaliação, pressionar no botão "A" e no painel lateral que entretanto é aberto pressionar no botão "Validar".
 
 ![pressione no botão AccessMonitor para abrir a extensão](https://github.com/user-attachments/assets/c22e07c3-c463-4705-965b-e6bd46c02e16)
+
+Boas avaliações!!
+
+Qualquer problema que nos queira dar conta com relação à extensão, [abra um issue e descreva o problema](). 
