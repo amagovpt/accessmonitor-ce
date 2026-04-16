@@ -7,9 +7,11 @@ AccessMonitor Chr1ome Extension<br>
 
 1. Descarregue o código do presente repositório para a sua máquina.
 
-Descarregue o ficheiro zip para a sua máquina:  
+Descarregue o ficheiro zip: [accessmonitor-ce-extension-v1.0.4.zip](https://github.com/amagovpt/accessmonitor-ce/releases/download/v1.0.4/accessmonitor-ce-extension-v1.0.4.zip).  
 
-2. Abra o _Google Chrome_ e no campo de edição do URL escreva `chrome://extensions/`
+2. Na sua máquina descompacte o ficheiro .zip e ficará com a pasta `accessmonitor-ce-extension-v1.0.4/`
+
+3. Abra o _Google Chrome_ e no campo de edição do URL escreva `chrome://extensions/`
 
 Nesta página, verifique se no canto superior direito a opção "Modo de Programador" está ativa. Se não estiver, ative-a!
 
@@ -19,11 +21,11 @@ A ativação desta opção fará surgir no canto superior esquerdo o botão "Car
 
 ![botão carregar expandida](https://github.com/user-attachments/assets/bd68cc92-1069-49e3-b18e-dd93daf0094f)
 
-Pressione no botão "carregar expandida" e selecione a pasta `/dist` que está dentro da subpasta `/accessmonitor-ce` da pasta que descarregou no passo anterior. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
+Pressione no botão "carregar expandida" e selecione a pasta `accessmonitor-ce-extension-v1.0.4/` que que descompactou no passo 2. Pressione no botão "selecionar" para que o processo de carregamento da extensão se inicie.
 
 ![selecioe a subpasta /dist que se encontra na pasta /accessmonitor-ce e pressione o botão selecionar](https://github.com/user-attachments/assets/d4563b4e-10e6-4fd4-bae5-41ab459e0843)
 
-3. Verifique se a extensão está ativa e fixe-a na barra de ferramentas
+4. Verifique se a extensão está ativa e fixe-a na barra de ferramentas
 
 Isto fará surgir a extensão na página. No seu cartão, verifique que está ativa (ver botão no canto inferior direito do cartão).
 
