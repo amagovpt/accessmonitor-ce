@@ -1,23 +1,13 @@
 # accessmonitor-ce
 
 AccessMonitor Chr1ome Extension<br>
-<!-- /* (versão 1.0.2 de 28 outubro 2025, disponível na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_) */ -->
+<!-- (versão 1.0.2 de 28 outubro 2025, disponível na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_) -->
 
 **Última atualização: 15 abril 2026** - A presente versão da extensão (versão 1.0.4) encontra-se em vias de publicação na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_, mas já a pode usar instalando o código diretamente no seu _browser Chrome_ seguindo os seguintes passos:
 
 1. Descarregue o código do presente repositório para a sua máquina.
 
-![pressione code > descarregar zip](https://github.com/user-attachments/assets/273e1457-6353-4acb-a08c-322288ff37aa)
-
-No repositório Git pressione no botão "Code" e depois use a subopção "Descarregar ZIP".
-
-No seu computador descompacte o ficheiro `accessmonitor-ce-main.zip` que acabou de descarregar e obterá a diretoria e o conteúdo seguinte:
-
-- /accessmonitor-ce-main/
-  - /accessmonitor-extension/
-  - /accessmonitor-images/
-  - LICENSE
-  - README.md
+Descarregue o ficheiro zip para a sua máquina:  
 
 2. Abra o _Google Chrome_ e no campo de edição do URL escreva `chrome://extensions/`
 
