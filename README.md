@@ -45,4 +45,4 @@ Basta entrar na página da qual pretende fazer a sua avaliação, pressionar no 
 
 Boas avaliações!!
 
-Qualquer problema que nos queira dar conta com relação à extensão, [abra um issue e descreva o problema](https://github.com/amagovpt/accessmonitor-ce/issues). 
+Qualquer problema que nos queira dar conta, [abra um issue e descreva o problema encontrado na extensão do AccessMonitor](https://github.com/amagovpt/accessmonitor-ce/issues). 
