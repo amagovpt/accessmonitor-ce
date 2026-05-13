@@ -99,8 +99,7 @@ Para que as imagens apareçam corretamente, guarde as capturas de ecrã numa pas
 
 ## Notas
 
-- A extensão é gratuita e desenvolvida pela [AMA – Agência para a Modernização Administrativa](https://www.acessibilidade.gov.pt).
-- Avalia páginas com base no standard **WCAG 2.1**.
+- A extensão é gratuita e desenvolvida pela [ARTE](https://www.acessibilidade.gov.pt).
 - Não é necessário criar conta para usar a extensão.
 
 <!--
