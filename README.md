@@ -31,7 +31,7 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 <!-- 📸 IMAGEM 3: Inserir aqui a captura "passo3-confirmacao-adicionar.png"
      (screenshot da janela de confirmação com a seta a apontar para "Add extension") -->
-![Passo 3 – Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step03.png)
+![Passo 3 – Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step03.png)
 
 > A extensão ficará instalada automaticamente no seu Chrome.
 
@@ -47,7 +47,7 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 
 <!-- 📸 IMAGEM 4: Inserir aqui a captura "passo4-pin-extensao.png"
      (screenshot do painel de extensões com a seta a apontar para o pin do AccessMonitor) -->
-![Passo 4 – Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step04.png)
+![Passo 4 – Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step04.png)
 
 > O ícone do AccessMonitor (letra **A** azul) passará a aparecer sempre visível na barra do Chrome.
 
