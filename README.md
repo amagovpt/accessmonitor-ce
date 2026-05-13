@@ -4,7 +4,7 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 ---
 
-## Passo 1 — Aceder à página da extensão
+## Passo 1 - Aceder à página da extensão
 
 1. Abra o browser **Google Chrome**.
 2. Aceda ao site do AccessMonitor: [https://accessmonitor.acessibilidade.gov.pt](https://accessmonitor.acessibilidade.gov.pt)
@@ -12,32 +12,32 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 <!-- 📸 IMAGEM 1: Inserir aqui a captura "passo1-site-accessmonitor.png"
      (screenshot do site AccessMonitor com a seta a apontar para o link "Extensão para Chrome") -->
-![Passo 1 – Site AccessMonitor com link para a extensão](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png)
+![Passo 1 - Site AccessMonitor com link para a extensão](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png)
 
 > Será redirecionado para a página da extensão na Chrome Web Store.
 
 ---
 
-## Passo 2 — Instalar a extensão
+## Passo 2 - Instalar a extensão
 
 1. Na página da **Chrome Web Store**, clique no botão **"Instalar"** (canto superior direito).
 
 <!-- 📸 IMAGEM 2: Inserir aqui a captura "passo2-chrome-webstore-instalar.png"
      (screenshot da Chrome Web Store com a seta a apontar para o botão "Instalar") -->
-![Passo 2 – Botão Instalar na Chrome Web Store](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step02.png)
+![Passo 2 - Botão Instalar na Chrome Web Store](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step02.png)
 
 2. Aparecerá uma janela de confirmação com o título **"Add AccessMonitor Extension?"**.
 3. Clique em **"Add extension"** para confirmar a instalação.
 
 <!-- 📸 IMAGEM 3: Inserir aqui a captura "passo3-confirmacao-adicionar.png"
      (screenshot da janela de confirmação com a seta a apontar para "Add extension") -->
-![Passo 3 – Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step03.png)
+![Passo 3 - Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step03.png)
 
 > A extensão ficará instalada automaticamente no seu Chrome.
 
 ---
 
-## Passo 3 — Fixar (pin) a extensão para acesso rápido
+## Passo 3 - Fixar (pin) a extensão para acesso rápido
 
 Após a instalação, a extensão pode não estar visível na barra de ferramentas. Para a fixar:
 
@@ -47,13 +47,13 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 
 <!-- 📸 IMAGEM 4: Inserir aqui a captura "passo4-pin-extensao.png"
      (screenshot do painel de extensões com a seta a apontar para o pin do AccessMonitor) -->
-![Passo 4 – Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step04.png)
+![Passo 4 - Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step04.png)
 
 > O ícone do AccessMonitor (letra **A** azul) passará a aparecer sempre visível na barra do Chrome.
 
 ---
 
-## Passo 4 — Utilizar a extensão numa página Web
+## Passo 4 - Utilizar a extensão numa página Web
 
 1. Navegue até à página Web que pretende avaliar.
 2. Clique no ícone do **AccessMonitor** na barra de ferramentas do Chrome.
@@ -62,19 +62,19 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 
 <!-- 📸 IMAGEM 5: Inserir aqui a captura "passo5-avaliar-pagina.png"
      (screenshot com o painel do AccessMonitor aberto à direita e o botão "Avaliar página" visível) -->
-![Passo 5 – Painel do AccessMonitor com botão "Avaliar página"](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step05.png)
+![Passo 5 - Painel do AccessMonitor com botão "Avaliar página"](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step05.png)
 
 > O relatório será gerado automaticamente, mostrando a pontuação e os eventuais erros de acessibilidade encontrados na página.
 
 ---
 
-## Passo 5 — Interpretar o Sumário de resultados
+## Passo 5 - Interpretar o Sumário de resultados
 
 Após a avaliação, o painel apresenta um **Sumário** com a pontuação e a distribuição dos resultados.
 
 <!-- 📸 IMAGEM 6: Inserir aqui a captura "passo6-resultados-sumario.png"
      (screenshot do painel com o sumário — pontuação 9.1, tabela de práticas com Aceitáveis/Para ver manualmente/Não aceitáveis) -->
-![Passo 6 – Sumário de resultados do AccessMonitor](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step06.png)
+![Passo 6 - Sumário de resultados do AccessMonitor](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step06.png)
 
 ### Pontuação global
 
@@ -91,15 +91,15 @@ A pontuação vai de **0 a 10**. Quanto mais alta, melhor a acessibilidade da p�
 | **Tamanho da página** | Peso total da página em KB |
 | **Práticas encontradas** | Total de critérios WCAG verificados |
 
-### Tabela de práticas — Tipo e nível
+### Tabela de práticas - Tipo e nível
 
 Os resultados são classificados em três tipos e três níveis de conformidade WCAG:
 
 **Tipos de prática:**
 
-- 🟢 **Aceitáveis** — critérios que a página cumpre corretamente. Não requerem ação.
-- 🟡 **Para ver manualmente** — critérios que a ferramenta não consegue verificar automaticamente (ex: adequação de textos alternativos). Devem ser revistos por uma pessoa.
-- 🔴 **Não aceitáveis** — critérios que a página **falha**. São erros de acessibilidade que devem ser corrigidos com prioridade.
+- 🟢 **Aceitáveis** - critérios que a página cumpre corretamente. Não requerem ação.
+- 🟡 **Para ver manualmente** - critérios que a ferramenta não consegue verificar automaticamente (ex: adequação de textos alternativos). Devem ser revistos por uma pessoa.
+- 🔴 **Não aceitáveis** - critérios que a página **falha**. São erros de acessibilidade que devem ser corrigidos com prioridade.
 
 **Níveis de conformidade WCAG:**
 
@@ -122,13 +122,13 @@ Os resultados são classificados em três tipos e três níveis de conformidade 
 
 ---
 
-## Passo 6 — Explorar a lista de Avaliação
+## Passo 6 - Explorar a lista de Avaliação
 
 Ao fazer scroll no painel, ou clicando no separador **"Avaliação"**, aparece a lista detalhada de todas as práticas encontradas.
 
 <!-- 📸 IMAGEM 7: Inserir aqui a captura "passo7-lista-avaliacao.png"
      (screenshot da lista "Avaliação" com as práticas listadas — ícones coloridos, nível A/AA e botão "Ver detalhe") -->
-![Passo 7 – Lista de práticas na vista Avaliação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step07.png)
+![Passo 7 - Lista de práticas na vista Avaliação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step07.png)
 
 Cada linha da lista apresenta:
 
@@ -143,14 +143,14 @@ Cada linha da lista apresenta:
 
 ---
 
-## Passo 7 — Ver o detalhe de uma prática
+## Passo 7 - Ver o detalhe de uma prática
 
 Ao clicar no botão **"Ver detalhe"** (ícone ≡🔍) de qualquer prática, abre-se a vista **"Detalhes do teste"**.
 
 <!-- 📸 IMAGEM 8: Inserir aqui a captura "passo8-detalhes-teste.png"
      (screenshot da vista "Detalhes do teste" com o código HTML da ocorrência destacado, botão "Destacar" e informações de localização) -->
-![Passo 8 – Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step08.png)
-![Passo 8 – Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step09.png)
+![Passo 8 - Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step08.png)
+![Passo 8 - Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step09.png)
 
 Esta vista mostra, para cada ocorrência encontrada:
 
