@@ -78,25 +78,6 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 | 4 | Fixar a extensão clicando no ícone 🧩 e depois no pin 📌 |
 | 5 | Abrir a extensão e clicar em "Avaliar página" |
 
----
-
-## Estrutura de ficheiros sugerida
-
-Para que as imagens apareçam corretamente, guarde as capturas de ecrã numa pasta chamada `imagens/` na mesma localização do README:
-
-```
-📁 projeto/
-├── README-AccessMonitor-Extension.md
-└── 📁 imagens/
-    ├── passo1-site-accessmonitor.png       ← Imagem 1 (site com link para extensão)
-    ├── passo2-chrome-webstore-instalar.png ← Imagem 2 (botão "Instalar")
-    ├── passo3-confirmacao-adicionar.png    ← Imagem 3 (janela "Add extension")
-    ├── passo4-pin-extensao.png             ← Imagem 4 (fixar extensão)
-    └── passo5-avaliar-pagina.png           ← Imagem 5 (painel "Avaliar página")
-```
-
----
-
 ## Notas
 
 - A extensão é gratuita e desenvolvida pela [ARTE](https://www.acessibilidade.gov.pt).
