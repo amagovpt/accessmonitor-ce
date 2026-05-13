@@ -12,7 +12,7 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 <!-- 📸 IMAGEM 1: Inserir aqui a captura "passo1-site-accessmonitor.png"
      (screenshot do site AccessMonitor com a seta a apontar para o link "Extensão para Chrome") -->
-![Passo 1 – Site AccessMonitor com link para a extensão]([imagens/passo1-site-accessmonitor.png](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png))
+![Passo 1 – Site AccessMonitor com link para a extensão](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png)
 
 > Será redirecionado para a página da extensão na Chrome Web Store.
 
