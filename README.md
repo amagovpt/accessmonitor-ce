@@ -12,7 +12,7 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 <!-- 📸 IMAGEM 1: Inserir aqui a captura "passo1-site-accessmonitor.png"
      (screenshot do site AccessMonitor com a seta a apontar para o link "Extensão para Chrome") -->
-![Passo 1 – Site AccessMonitor com link para a extensão](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png)
+![Passo 1 – Site AccessMonitor com link para a extensão]([imagens/passo1-site-accessmonitor.png](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step01.png))
 
 > Será redirecionado para a página da extensão na Chrome Web Store.
 
@@ -31,7 +31,7 @@ A extensão **AccessMonitor** permite avaliar a acessibilidade de qualquer pági
 
 <!-- 📸 IMAGEM 3: Inserir aqui a captura "passo3-confirmacao-adicionar.png"
      (screenshot da janela de confirmação com a seta a apontar para "Add extension") -->
-![Passo 3 – Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step03.png)
+![Passo 3 – Janela de confirmação de instalação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step03.png)
 
 > A extensão ficará instalada automaticamente no seu Chrome.
 
@@ -47,7 +47,7 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 
 <!-- 📸 IMAGEM 4: Inserir aqui a captura "passo4-pin-extensao.png"
      (screenshot do painel de extensões com a seta a apontar para o pin do AccessMonitor) -->
-![Passo 4 – Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step04.png)
+![Passo 4 – Fixar a extensão na barra de ferramentas](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/Step04.png)
 
 > O ícone do AccessMonitor (letra **A** azul) passará a aparecer sempre visível na barra do Chrome.
 
@@ -68,6 +68,112 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 
 ---
 
+## Passo 5 — Interpretar o Sumário de resultados
+
+Após a avaliação, o painel apresenta um **Sumário** com a pontuação e a distribuição dos resultados.
+
+<!-- 📸 IMAGEM 6: Inserir aqui a captura "passo6-resultados-sumario.png"
+     (screenshot do painel com o sumário — pontuação 9.1, tabela de práticas com Aceitáveis/Para ver manualmente/Não aceitáveis) -->
+![Passo 6 – Sumário de resultados do AccessMonitor](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step06.png)
+
+### Pontuação global
+
+A pontuação vai de **0 a 10**. Quanto mais alta, melhor a acessibilidade da página.
+
+- **9.1** (como no exemplo acima) — muito boa acessibilidade, com alguns pontos a melhorar.
+- Abaixo de **5.0** — página com problemas sérios de acessibilidade.
+
+### Informações da página
+
+| Campo | O que significa |
+|-------|----------------|
+| **Elementos (x)HTML** | Número total de elementos HTML analisados na página |
+| **Tamanho da página** | Peso total da página em KB |
+| **Práticas encontradas** | Total de critérios WCAG verificados |
+
+### Tabela de práticas — Tipo e nível
+
+Os resultados são classificados em três tipos e três níveis de conformidade WCAG:
+
+**Tipos de prática:**
+
+- 🟢 **Aceitáveis** — critérios que a página cumpre corretamente. Não requerem ação.
+- 🟡 **Para ver manualmente** — critérios que a ferramenta não consegue verificar automaticamente (ex: adequação de textos alternativos). Devem ser revistos por uma pessoa.
+- 🔴 **Não aceitáveis** — critérios que a página **falha**. São erros de acessibilidade que devem ser corrigidos com prioridade.
+
+**Níveis de conformidade WCAG:**
+
+| Nível | Significado |
+|-------|-------------|
+| **A** | Nível mínimo obrigatório — falhas aqui tornam a página inacessível para muitos utilizadores |
+| **AA** | Nível recomendado e exigido por lei em muitos países (incluindo Portugal) |
+| **AAA** | Nível máximo de acessibilidade — difícil de atingir na totalidade, mas desejável |
+
+**Exemplo de leitura** (com os resultados da imagem acima):
+
+| Tipo | A | AA | AAA |
+|------|---|----|-----|
+| Aceitáveis (27) | 16 | 11 | 0 |
+| Para ver manualmente (7) | 4 | 1 | 2 |
+| Não aceitáveis (3) | 3 | 0 | 0 |
+| **Total (37)** | **23** | **12** | **2** |
+
+> Neste exemplo, existem **3 erros "Não aceitáveis"**, todos de nível **A** (o mais grave). São os primeiros a dever ser corrigidos.
+
+---
+
+## Passo 6 — Explorar a lista de Avaliação
+
+Ao fazer scroll no painel, ou clicando no separador **"Avaliação"**, aparece a lista detalhada de todas as práticas encontradas.
+
+<!-- 📸 IMAGEM 7: Inserir aqui a captura "passo7-lista-avaliacao.png"
+     (screenshot da lista "Avaliação" com as práticas listadas — ícones coloridos, nível A/AA e botão "Ver detalhe") -->
+![Passo 7 – Lista de práticas na vista Avaliação](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step07.png)
+
+Cada linha da lista apresenta:
+
+| Elemento | O que significa |
+|----------|----------------|
+| **Ícone colorido** | 🟢 Aceitável · 🟡 Para ver manualmente · 🔴 Não aceitável |
+| **Descrição da prática** | O critério WCAG que foi verificado e o resultado encontrado |
+| **Nível** | A, AA ou AAA — indica a gravidade e obrigatoriedade do critério |
+| **Ver detalhe** (ícone ≡🔍) | Abre o relatório completo daquela prática específica |
+
+> O botão **"Ver detalhe"** (seta na imagem acima) é o passo seguinte para perceber exatamente onde está o problema na página.
+
+---
+
+## Passo 7 — Ver o detalhe de uma prática
+
+Ao clicar no botão **"Ver detalhe"** (ícone ≡🔍) de qualquer prática, abre-se a vista **"Detalhes do teste"**.
+
+<!-- 📸 IMAGEM 8: Inserir aqui a captura "passo8-detalhes-teste.png"
+     (screenshot da vista "Detalhes do teste" com o código HTML da ocorrência destacado, botão "Destacar" e informações de localização) -->
+![Passo 8 – Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step08.png)
+
+Esta vista mostra, para cada ocorrência encontrada:
+
+| Campo | O que significa |
+|-------|----------------|
+| **Elemento** | O tipo de tag HTML em causa (ex: `a`, `button`, `img`) |
+| **Código** | O trecho de código HTML exato onde o problema foi detetado |
+| **Conteúdo/texto** | O texto visível ou acessível associado ao elemento |
+| **Localização** | O caminho no DOM que indica onde o elemento está na página (ex: `html > body:nth-child(2) > a:nth-child(1)`) |
+| **Destacar elemento** | Botão que realça visualmente o elemento diretamente na página Web |
+
+### Como usar o botão "Destacar"
+
+1. Clique em **"Destacar"** (no topo) para ver todos os elementos encontrados para aquela prática.
+2. Clique em **"Destacar elemento"** (junto a cada ocorrência) para localizar visualmente esse elemento específico na página à esquerda.
+
+> Este recurso é muito útil para developers e auditores, pois permite identificar **exatamente onde** está o erro sem ter de procurar manualmente no código.
+
+### Como voltar à lista
+
+Clique no botão **← Voltar** no topo do painel para regressar à lista de Avaliação.
+
+---
+
 ## Resumo dos passos
 
 | Passo | Ação |
@@ -77,6 +183,11 @@ Após a instalação, a extensão pode não estar visível na barra de ferrament
 | 3 | Confirmar com "Add extension" na janela de diálogo |
 | 4 | Fixar a extensão clicando no ícone 🧩 e depois no pin 📌 |
 | 5 | Abrir a extensão e clicar em "Avaliar página" |
+| 6 | Interpretar o Sumário: pontuação, práticas aceitáveis, manuais e erros por nível WCAG |
+| 7 | Explorar a lista de Avaliação e identificar práticas problemáticas |
+| 8 | Clicar em "Ver detalhe" para ver o código, localização e destacar o elemento na página |
+
+---
 
 ## Notas
 
