@@ -150,6 +150,7 @@ Ao clicar no botão **"Ver detalhe"** (ícone ≡🔍) de qualquer prática, abr
 <!-- 📸 IMAGEM 8: Inserir aqui a captura "passo8-detalhes-teste.png"
      (screenshot da vista "Detalhes do teste" com o código HTML da ocorrência destacado, botão "Destacar" e informações de localização) -->
 ![Passo 8 – Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step08.png)
+![Passo 8 – Detalhes do teste com código da ocorrência](https://github.com/bentojulio/accessmonitor-ce/blob/main/accessmonitor-images/step09.png)
 
 Esta vista mostra, para cada ocorrência encontrada:
 
