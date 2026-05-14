@@ -3,6 +3,10 @@
 **_AccessMonitor_ - Chrome Extension**<br>
 (versão 1.0.4 de 20 abril 2026, disponível na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_).
 
+A Extensão do _AccessMonitor_ para Chrome e Edge, consegue validar páginas sob login, incluíndo autenticação.Gov, páginas ainda em desenvolvimento - não publicadas ainda na Internet - e ainda... diferentes estados de uma página. Valide a página com o menu fechado e depois com o menu aberto, ou com um acordeão fechado e depois com o acordeão aberto e o _AccessMonitor_ faz avaliações para todas essas situações.
+
+Consulte o [Guia de Utilizador do _AccessMonitor Chrome Extension_](user_guide.md).
+
 <!--
 **Última atualização: 20 abril 2026** - A presente versão da extensão (versão 1.0.4) está publicada na _[Chrome Web Store da Google](https://chromewebstore.google.com/detail/accessmonitor-extension/knjdoonhhnjfmigigfgoehhihodndaii?hl=pt-PT&utm_source=ext_sidebar)_. mas já a pode usar instalando o código diretamente no seu _browser Chrome_ seguindo os seguintes passos:
 
