@@ -1,9 +1,36 @@
-import React from 'react';
 import { WidgetBar } from './components/widgets-bar';
 
 import './styles/styles.css';
 
-const pt = {
+export interface HeaderTexts {
+  language: string;
+  skip_to_main: string;
+  dark_mode: string;
+  light_mode: string;
+  language_en: string;
+  open_dropdown: string;
+  close_dropdown: string;
+  tool: string;
+  text: string;
+  accessibilityText: string;
+  accessibilityLink1: string;
+  accessibilityLink2: string;
+  accessibilityLink3: string;
+  usabilityText: string;
+  usabilityLink1: string;
+  usabilityLink2: string;
+  usabilityLink3: string;
+  usabilityLink4: string;
+  usabilityLink5: string;
+  badgeText: string;
+  badgeLink1: string;
+  badgeLink2: string;
+  badgeLink3: string;
+  badgeLink4: string;
+  roleDescription: string;
+}
+
+const pt: HeaderTexts = {
   language: 'en',
   skip_to_main: 'Saltar para o conteúdo principal',
   dark_mode: 'Modo escuro',
@@ -37,7 +64,7 @@ const pt = {
   roleDescription: 'painel de acordeão',
 };
 
-const en = {
+const en: HeaderTexts = {
   language: 'pt-PT',
   skip_to_main: 'Skip to main content',
   dark_mode: 'Dark mode',
@@ -69,6 +96,21 @@ const en = {
   roleDescription: 'accordion panel',
 };
 
+export interface HeaderProps {
+  description?: string;
+  language: string;
+  title?: string;
+  title2?: string;
+  logo: string;
+  darkTheme?: string;
+  changeTheme?: () => void;
+  changeLanguage?: () => void;
+  homePage: boolean;
+  linkTo?: string;
+  ariaLabel: string;
+  obsSpecial?: boolean;
+}
+
 export function Header({
   description,
   language,
@@ -82,7 +124,7 @@ export function Header({
   linkTo,
   ariaLabel,
   obsSpecial,
-}) {
+}: HeaderProps) {
   const theme = darkTheme === 'dark' ? 'dark' : '';
 
   const lngTexts = language === 'en' ? en : pt;

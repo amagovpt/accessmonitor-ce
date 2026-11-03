@@ -1,7 +1,4 @@
-// import "./styles.css";
-
-import { useContext, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -20,12 +17,23 @@ import {
   setWCAG,
 } from '../../store/slice/evaluationSlice';
 
-import { ThemeContext } from '../../../context/ThemeContext';
+import {
+  getUrl,
+  startEvaluation,
+  getHTML,
+  evaluateACT,
+  evaluateWCAG,
+  evaluateBP,
+  evaluateCounter,
+  endingEvaluation,
+} from '../../messaging';
+import { useTheme } from '../../../context/ThemeContext';
+import { useAppDispatch } from '../../store/hooks';
 
 export default function Home() {
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [evltd, setEvltd] = useState(false);
@@ -35,36 +43,27 @@ export default function Home() {
   };
 
   const evaluate = async () => {
-    let act, bp, counter, html, summary, url, wcag;
-
-    // get page's url
-    url = await getUrl();
+    const url = await getUrl();
     dispatch(setURL(url));
 
-    // start evaluation
     await startEvaluation();
 
-    // get html
-    html = await getHTML();
+    const html = await getHTML();
     dispatch(setDom({ html: html }));
 
-    // evaluate act
-    act = await evaluateACT();
+    const act = await evaluateACT();
     dispatch(setACT(act));
 
-    // evaluate wcag
-    wcag = await evaluateWCAG();
+    const wcag = await evaluateWCAG();
     dispatch(setWCAG(wcag));
 
-    // evaluate bp
-    bp = await evaluateBP();
+    const bp = await evaluateBP();
     dispatch(setBP(bp));
 
-    counter = await evaluateCounter();
+    const counter = await evaluateCounter();
     dispatch(setCounter(counter));
 
-    // finish evaluation
-    summary = await endingEvaluation();
+    const summary = await endingEvaluation();
     dispatch(setSummary(summary));
 
     if (act && wcag && bp && counter) {
@@ -84,7 +83,7 @@ export default function Home() {
     }
   }, [evltd]);
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   return (
     <>

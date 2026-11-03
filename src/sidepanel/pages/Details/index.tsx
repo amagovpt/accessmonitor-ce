@@ -1,7 +1,4 @@
-// import "./styles.css";
-
-import { useEffect, useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -15,16 +12,27 @@ import {
 
 import { pathURL } from '../../App';
 
-import { ThemeContext } from '../../../context/ThemeContext';
+import {
+  highlightAllElements,
+  unhighlightAllElements,
+  getTestResults,
+} from '../../messaging';
+import { useTheme } from '../../../context/ThemeContext';
+import { useAppSelector } from '../../store/hooks';
+import type { AuditReport, TestDetails } from '../../../shared/types';
 
-export default function Details({ allData, setAllData }) {
+export interface DetailsProps {
+  allData: AuditReport['scoring']['assertionEvidence'];
+  setAllData: (data: AuditReport['scoring']['assertionEvidence']) => void;
+}
+
+export default function Details({ allData, setAllData }: DetailsProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { details } = useParams();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
-  const evaluation = useSelector((state) => state.evaluation);
-  const tot = evaluation.data.data.tot;
+  const evaluation = useAppSelector((state) => state.evaluation);
 
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [error, setError] = useState(false);
@@ -32,7 +40,7 @@ export default function Details({ allData, setAllData }) {
   const themeClass = theme === 'light' ? '' : 'dark_mode-details';
 
   const getElementsLocations = () => {
-    let codes = [];
+    const codes: string[] = [];
     dataTable?.elements?.map((element) => codes.push(element?.pointer));
     return codes;
   };
@@ -42,7 +50,7 @@ export default function Details({ allData, setAllData }) {
 
     if (highlighted) {
       let i = 1;
-      while (i <= dataTable?.elements?.length) {
+      while (i <= (dataTable?.elements?.length ?? 0)) {
         // change button
         const hideButton = document.getElementById(`hideElement_${i}`);
         const showButton = document.getElementById(`showElement_${i}`);
@@ -77,7 +85,7 @@ export default function Details({ allData, setAllData }) {
 
     if (unhighlighted) {
       let i = 1;
-      while (i <= dataTable?.elements?.length) {
+      while (i <= (dataTable?.elements?.length ?? 0)) {
         // change button
         const hideButton = document.getElementById(`hideElement_${i}`);
         const showButton = document.getElementById(`showElement_${i}`);
@@ -103,7 +111,9 @@ export default function Details({ allData, setAllData }) {
         showButton.style.display = 'block';
       }
     } else {
-      console.error('Failed to unhighlight elements: ' + codes);
+      console.error(
+        'Failed to unhighlight elements: ' + getElementsLocations(),
+      );
     }
   };
 
@@ -113,12 +123,12 @@ export default function Details({ allData, setAllData }) {
   };
 
   const textHeading = t(`ELEMS.${details}`);
-  const [dataTable, setDataTable] = useState([]);
+  const [dataTable, setDataTable] = useState<TestDetails>();
 
   useEffect(() => {
     const fetchData = async () => {
-      const nodes = allData.data.nodes;
-      const response = await getTestResults(details, nodes, tot);
+      if (!details || !evaluation.data) return;
+      const response = await getTestResults(details, evaluation.data);
       setDataTable(response);
       setLoadingProgress(false);
     };
@@ -126,7 +136,7 @@ export default function Details({ allData, setAllData }) {
     fetchData();
   }, []);
 
-  let iconName;
+  let iconName: string;
 
   if (dataTable?.result === 'R') {
     iconName = 'AMA-Wrong-Line';
@@ -136,7 +146,7 @@ export default function Details({ allData, setAllData }) {
     iconName = 'AMA-Check-Line';
   }
 
-  let tdClassName;
+  let tdClassName: string;
 
   if (dataTable?.result === 'R') {
     tdClassName = 'error-cell';

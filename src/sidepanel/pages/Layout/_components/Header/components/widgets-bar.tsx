@@ -1,5 +1,20 @@
 import { Icon } from 'ama-design-system';
-import React from 'react';
+import type { HeaderTexts } from '../index';
+
+export interface WidgetBarProps {
+  description?: string;
+  logo: string;
+  title?: string;
+  title2?: string;
+  changeTheme: (() => void) | null;
+  changeLanguage: (() => void) | null | undefined;
+  darkTheme?: string;
+  homePage: boolean;
+  linkTo?: string;
+  lngTexts: HeaderTexts;
+  obsSpecial?: boolean;
+}
+
 export function WidgetBar({
   description,
   logo,
@@ -12,7 +27,7 @@ export function WidgetBar({
   linkTo,
   lngTexts,
   obsSpecial,
-}) {
+}: WidgetBarProps) {
   return (
     <div className="widgets-bar py-4">
       <div className="container">
@@ -72,7 +87,7 @@ export function WidgetBar({
           <div className="d-flex flex-row gap-4 button-mobile">
             <button
               className="btn btn-link dark-mode p-1 d-flex align-items-center"
-              onClick={changeTheme ? () => changeTheme() : null}
+              onClick={changeTheme ? () => changeTheme() : undefined}
             >
               <span id="darkModeLabel-mobile" className="ama-typography-body">
                 {darkTheme == 'dark' ? lngTexts.light_mode : lngTexts.dark_mode}
@@ -87,7 +102,7 @@ export function WidgetBar({
             <button
               className="btn btn-link language-mode p-1  d-flex align-items-center"
               lang={lngTexts.language}
-              onClick={changeLanguage ? () => changeLanguage() : null}
+              onClick={changeLanguage ? () => changeLanguage() : undefined}
             >
               <span id="langModeLabel-mobile" className="ama-typography-body">
                 {lngTexts.language_en}

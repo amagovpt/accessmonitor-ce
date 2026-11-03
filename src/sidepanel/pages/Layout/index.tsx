@@ -1,6 +1,4 @@
-// import "./styles.css";
-
-import { useContext } from 'react';
+import type { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -8,10 +6,10 @@ import { Header } from './_components/Header';
 
 import { accessMonitorURL, pathURL } from '../../App';
 
-import { ThemeContext } from '../../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 
-export default function Layout({ children }) {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+export default function Layout({ children }: { children: ReactNode }) {
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
   const mainDark = theme === 'light' ? '' : 'main_dark';
 

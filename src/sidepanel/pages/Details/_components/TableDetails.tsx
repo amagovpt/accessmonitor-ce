@@ -1,17 +1,23 @@
-// import "./styles.css";
-
 import { useTranslation } from 'react-i18next';
 
 import { ButtonsHighlight } from './buttons-revalidation';
+import { highlightElement } from '../../../messaging';
+import type { ElementDetail } from '../../../../shared/types';
 
-const renderHTML = (htmlString) => {
-  return { __html: htmlString };
+const renderHTML = (htmlString: string | undefined) => {
+  return { __html: htmlString ?? '' };
 };
 
-export function TableDetails({ themeClass, theme, data }) {
+export interface TableDetailsProps {
+  themeClass: string;
+  theme: string;
+  data: ElementDetail[] | undefined;
+}
+
+export function TableDetails({ themeClass, theme, data }: TableDetailsProps) {
   const { t } = useTranslation();
 
-  const handleHighlightElement = async (index, code) => {
+  const handleHighlightElement = async (index: number, code: string) => {
     // highlight element
     const highlighted = await highlightElement(code);
 

@@ -1,18 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import "./styles.css";
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Icon } from 'ama-design-system';
 
+export interface ButtonsActionsProps {
+  reRequest: () => void | Promise<unknown>;
+  downloadCSV: () => void;
+  downloadAuditReport: () => void | Promise<void>;
+  themeClass: string;
+}
+
 export function ButtonsActions({
   reRequest,
   downloadCSV,
-  downloadUploadableCSV,
+  downloadAuditReport,
   themeClass,
-}) {
+}: ButtonsActionsProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -56,16 +61,13 @@ export function ButtonsActions({
                 aria-labelledby="dropdownMenuButton"
               >
                 <li>
-                  <button onClick={downloadCSV} download="eval.csv">
+                  <button onClick={downloadCSV}>
                     <span>{t('RESULTS.actions.download_simple')}</span>
                     <Icon name="AMA-DownloadSetacurta-Line" />
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={downloadUploadableCSV}
-                    download="eval_mymonitor.csv"
-                  >
+                  <button onClick={downloadAuditReport}>
                     <span>{t('RESULTS.actions.download_uploadable')}</span>
                     <Icon name="AMA-DownloadSetacurta-Line" />
                   </button>
@@ -114,7 +116,7 @@ export function ButtonsActions({
                   </button>
                 </li>
                 <li>
-                  <button onClick={downloadUploadableCSV}>
+                  <button onClick={downloadAuditReport}>
                     <span>{t('RESULTS.actions.download_uploadable')}</span>
                     <Icon name="AMA-DownloadSetacurta-Line" />
                   </button>

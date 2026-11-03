@@ -1,11 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import "./styles.css";
 
 import { useTranslation } from 'react-i18next';
 
 import { Button, Icon } from 'ama-design-system';
 
-export function ButtonsActions({ handleGoBack, themeClass, theme }) {
+export interface ButtonsActionsProps {
+  handleGoBack: () => void;
+  themeClass: string;
+  theme: string;
+}
+
+export function ButtonsActions({
+  handleGoBack,
+  themeClass,
+  theme,
+}: ButtonsActionsProps) {
   const { t } = useTranslation();
 
   return (
@@ -26,7 +35,19 @@ export function ButtonsActions({ handleGoBack, themeClass, theme }) {
   );
 }
 
-export function ButtonsHighlight({ handleHighlight, themeClass, theme, txt }) {
+export interface ButtonsHighlightProps {
+  handleHighlight: () => void;
+  themeClass: string;
+  theme: string;
+  txt: string;
+}
+
+export function ButtonsHighlight({
+  handleHighlight,
+  themeClass,
+  theme,
+  txt,
+}: ButtonsHighlightProps) {
   return (
     <>
       <div className={`d-flex justify-content-between ${themeClass}`}>
