@@ -7,12 +7,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 const config = {
   mode: 'production',
   entry: {
-    background: './src/background.js',
+    background: './src/background.ts',
     content: './src/content/content.ts',
-    sidepanel: './src/sidepanel/sidepanel.js',
+    sidepanel: './src/sidepanel/sidepanel.tsx',
   },
+  devtool: 'cheap-module-source-map',
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
@@ -26,12 +27,12 @@ const config = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.jsx', '.ts', '.js'],
+    extensions: ['.jsx', '.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'ts-loader',
       },
       {
@@ -76,9 +77,6 @@ const config = {
           from: 'node_modules/@qualweb/best-practices/dist/__webpack/bp.bundle.js',
           to: 'bp.js',
         },
-        { from: 'src/sidepanel/evaluate.js', to: 'sidepanel/evaluate.js' },
-        { from: 'src/sidepanel/middleware.js', to: 'sidepanel/middleware.js' },
-        { from: 'src/sidepanel/highlight.js', to: 'sidepanel/highlight.js' },
         {
           from: 'src/sidepanel/sidepanel.html',
           to: 'sidepanel/sidepanel.html',
