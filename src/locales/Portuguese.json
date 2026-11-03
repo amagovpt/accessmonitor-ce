@@ -91,8 +91,8 @@
       "actions": {
         "back": "Voltar",
         "re_evaluate": "Re-avaliar a página",
-        "download": "Descarregar dados em CSV",
-        "download_simple": "Descarregar",
+        "download": "Descarregar dados",
+        "download_simple": "Descarregar CSV",
         "download_uploadable": "Descarregar para importar no My Monitor",
         "see_page": "Ver página",
         "pagecode": "Ver código da página",
