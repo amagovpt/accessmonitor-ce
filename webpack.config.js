@@ -11,9 +11,9 @@ const config = {
     content: './src/content/content.ts',
     sidepanel: './src/sidepanel/sidepanel.tsx',
   },
-  devtool: 'cheap-module-source-map',
+  //devtool: 'cheap-module-source-map',
   optimization: {
-    minimize: false,
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
