@@ -1,19 +1,22 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "lib": ["dom", "es2016"],
+    "lib": ["dom", "es2017"],
     "strict": true,
     "module": "commonjs",
     "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["chrome"],
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": false,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx"
   },
-  "outDir": "dist",
-  "types": ["chrome"],
-  "include": ["src/**/*.ts", "src/**/*.jsx", "src/**/*.js", "src/**/*.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  // Cópias de trabalho (backups locais), fora da verificação
+  "exclude": ["node_modules", "dist", "src/**/* copy*"]
 }
