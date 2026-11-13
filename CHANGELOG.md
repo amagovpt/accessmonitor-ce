@@ -1,5 +1,11 @@
 # accessmonitor-extension
 
+## 2.0.0
+
+### Major Changes
+
+- 1e6a3cd: refactor!: centralize scoring/metadata in rulesets, enforce strict typing in core, and migrate to TS/React
+
 ## 1.0.5
 
 ### Patch Changes
