@@ -1,6 +1,6 @@
 {
   "name": "accessmonitor-extension",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "private": true,
   "author": "Filipe Dávila <57022557+Filipedavila@users.noreply.github.com>",
   "dependencies": {
